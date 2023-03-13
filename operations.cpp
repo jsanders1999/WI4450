@@ -35,12 +35,12 @@ void axpby(int n, double a, double const* x, double b, double* y)
   return y[i];
 }
 
-//! apply a 7-point stencil to a vector, v = op*u
+//! apply a 7-point stencil to a vector, v = op*x
 void apply_stencil3d(stencil3d const* S,
         double const* u, double* v)
 {
   // [...]
-  S->index_c;
-  return;
+  v = value_c*u[S->index_c] + value_n*u[S->index_n] + value_e*u[S->index_e] + value_s*u[S->index_s] + value_w*u[S->index_w] + value_b*u[S->index_b] + value_t*u[S->index_t];
+  return v;
 }
 
