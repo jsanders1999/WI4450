@@ -69,7 +69,7 @@ void apply_stencil3d(stencil3d const* S,
         if(j==0){
           v[S->index_c(i,j,k)] += S->value_t*u[S->index_t(i,j,k)];
         }
-        else if(j==S->ny-1){
+        else if(j==S->nz-1){
           v[S->index_c(i,j,k)] += S->value_b*u[S->index_b(i,j,k)];
         }
         else{
