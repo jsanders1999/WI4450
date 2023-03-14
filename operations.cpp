@@ -9,7 +9,7 @@ void init(int n, double* x, double value)
   {
     x[i] = value;
   }
-  return x;
+  return;
 }
 
 // scalar product: return sum_i x[i]*y[i] for 0<=i<n
@@ -32,7 +32,7 @@ void axpby(int n, double a, double const* x, double b, double* y)
   {
     y[i] = a*x[i] + b*y[i];
   }
-  return y;
+  return;
 }
 
 //! apply a 7-point stencil to a vector, v = op*x
@@ -42,6 +42,6 @@ void apply_stencil3d(stencil3d const* S,
   // [...]
   // something with boundary conditions?
   v = S->value_c*u[S->index_c] + S->value_n*u[S->index_n] + S->value_e*u[S->index_e] + S->value_s*u[S->index_s] + S->value_w*u[S->index_w] + S->value_b*u[S->index_b] + S->value_t*u[S->index_t];
-  return v;
+  return;
 }
 
