@@ -49,7 +49,7 @@ void apply_stencil3d(stencil3d const* S,
         if(i==0){
           v[S->index_c(i,j,k)] += S->value_e*u[S->index_e(i,j,k)];
         }
-        if(i==nx-1){
+        if(i==S->nx-1){
           v[S->index_c(i,j,k)] += S->value_w*u[S->index_w(i,j,k)];
         }
         else{
@@ -59,7 +59,7 @@ void apply_stencil3d(stencil3d const* S,
         if(j==0){
           v[S->index_c(i,j,k)] += S->value_n*u[S->index_n(i,j,k)];
         }
-        if(j==ny-1){
+        if(j==S->ny-1){
           v[S->index_c(i,j,k)] += S->value_s*u[S->index_s(i,j,k)];
         }
         else{
@@ -69,7 +69,7 @@ void apply_stencil3d(stencil3d const* S,
         if(j==0){
           v[S->index_c(i,j,k)] += S->value_t*u[S->index_t(i,j,k)];
         }
-        if(j==ny-1){
+        if(j==S->ny-1){
           v[S->index_c(i,j,k)] += S->value_b*u[S->index_b(i,j,k)];
         }
         else{
