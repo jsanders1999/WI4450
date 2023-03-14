@@ -96,7 +96,6 @@ TEST(operations, stencil3d_symmetric)
     apply_stencil3d(&S, e, A+i*n);
   }
 
-  if (wrong_entries)
   {
     std::cout << "Your matrix (computed on a 2x2x2 grid by apply_stencil(I)) is ..."<<std::endl;
     for (int j=0; j<n; j++)
