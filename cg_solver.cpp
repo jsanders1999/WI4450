@@ -45,7 +45,7 @@ void cg_solver(stencil3d const* op, int n, double* x, double const* b,
 
     // rho = <r, r>
     // [...]
-    rho = dot(n, r, r)
+    rho = dot(n, r, r);
 
     if (verbose)
     {
@@ -82,11 +82,11 @@ void cg_solver(stencil3d const* op, int n, double* x, double const* b,
 
     // x = x + alpha * p
     // [...]
-    axpby(n, alpha, p, 1.0, x)
+    axpby(n, alpha, p, 1.0, x);
 
     // r = r - alpha * q
     // [...]
-    axpby(n, -alpha, q, 1.0, r)
+    axpby(n, -alpha, q, 1.0, r);
 
     std::swap(rho_old, rho);
   }// end of while-loop
