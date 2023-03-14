@@ -41,7 +41,13 @@ void apply_stencil3d(stencil3d const* S,
 {
   // [...]
   // something with boundary conditions?
-  v = S->value_c*u[S->index_c] + S->value_n*u[S->index_n] + S->value_e*u[S->index_e] + S->value_s*u[S->index_s] + S->value_w*u[S->index_w] + S->value_b*u[S->index_b] + S->value_t*u[S->index_t];
+  for(int i = 0; i < S->nx; i++){
+    for(int j = 0; i < S->ny; j++){
+      for(int k = 0; i < S->nz; k++){
+        v[S->index_c(i,j,k)] = S->value_c*u[S->index_c(i,j,k)] + S->value_n*u[S->index_n(i,j,k)] + S->value_e*u[S->index_e(i,j,k)] + S->value_s*u[S->index_s(i,j,k)] + S->value_w*u[S->index_w(i,j,k)] + S->value_b*u[S->index_b(i,j,k)] + S->value_t*u[S->index_t(i,j,k)];
+      }
+    }
+  }
   return;
 }
 
