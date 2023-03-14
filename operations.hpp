@@ -77,6 +77,6 @@ typedef struct stencil3d
 
 
 //! apply a 7-point stencil to a vector, v = op*x
-void apply_stencil3d(stencil3d const* op,
+void apply_stencil3d(stencil3d const* S,
         double const* u, double* v);
 
