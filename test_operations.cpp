@@ -69,7 +69,7 @@ TEST(operations, dot) {
   EXPECT_NEAR(res, (double)n, n*std::numeric_limits<double>::epsilon());
 }
 
-TEST(operations,stencil3d_symmetric)
+TEST(operations, stencil3d_symmetric)
 {
 //  const int nx=3, ny=4, nz=5;
   const int nx=2, ny=2, nz=2;

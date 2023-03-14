@@ -16,7 +16,7 @@ void init(int n, double* x, double value)
 double dot(int n, double const* x, double const* y)
 {
   // [...]
-  double res;
+  double* res;
   for(int i = 0; i < n; i++)
   {
     res = x[i]*y[i];
