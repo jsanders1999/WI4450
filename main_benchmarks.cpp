@@ -106,10 +106,10 @@ int main(int argc, char* argv[])
   // Loop over nx size
   int nx_arr[6] = {32, 64, 128, 256, 512, 1024};
   for(int nx: nx_arr){
-    std::cout<< nx<<std::endl;
+    std::cout<< nx <<std::endl;
 
     // total number of unknowns
-    n=nx*nx*nx;
+    int n=nx*nx*nx;
 
     dx=1.0/(nx-1), dy=1.0/(ny-1), dz=1.0/(nz-1);
 
@@ -118,6 +118,7 @@ int main(int argc, char* argv[])
 
     // solution vector: start with a 0 vector
     init(n, x, 0.0);
+    std::cout << x[n]<< std::endl
 
     // right-hand side
     init(n, b, 0.0);
