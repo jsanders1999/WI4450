@@ -49,7 +49,7 @@ stencil3d laplace3d_stencil(int nx, int ny, int nz)
 
 int main(int argc, char* argv[])
 {
-  Timer("Label for the timer");
+  Timer("Timer for main_cg_poisson");
   int nx, ny, nz;
 
   if      (argc==1) {nx=128;           ny=128;           nz=128;}
@@ -76,7 +76,7 @@ int main(int argc, char* argv[])
   init(n, b, 0.0);
 
   // initialize the rhs with f(x,y,z) in the interior of the domain
-#pragma omp parallel for schedule(static)
+//#pragma omp parallel for schedule(static)
   for (int k=0; k<nz; k++)
   {
     double z = k*dz;
