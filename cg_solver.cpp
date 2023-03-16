@@ -126,7 +126,7 @@ void cg_solver_threads(stencil3d const* op, int n, double* x, double const* b,
     iter++;
 
     // rho = <r, r>
-    rho = dot(n, r, r);
+    rho = dot_threads(n, r, r, threadnum);
 
     if (verbose)
     {
@@ -148,7 +148,7 @@ void cg_solver_threads(stencil3d const* op, int n, double* x, double const* b,
       alpha = rho / rho_old;
     }
     // p = r + alpha * p
-    axpby(n, 1.0, r, alpha, p);
+    axpby_threads(n, 1.0, r, alpha, p, threadnum);
 
     // q = op * p
     apply_stencil3d_threads(op, p, q, threadnum);
@@ -159,10 +159,10 @@ void cg_solver_threads(stencil3d const* op, int n, double* x, double const* b,
     alpha = rho / beta;
 
     // x = x + alpha * p
-    axpby(n, alpha, p, 1.0, x);
+    axpby_threads(n, alpha, p, 1.0, x, threadnum);
 
     // r = r - alpha * q
-    axpby(n, -alpha, q, 1.0, r);
+    axpby_threads(n, -alpha, q, 1.0, r, threadnum);
 
     std::swap(rho_old, rho);
   }// end of while-loop

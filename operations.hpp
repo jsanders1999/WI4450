@@ -10,11 +10,20 @@
 // initialize a vector with a constant value, x[i] = value for 0<=i<n
 void init(int n, double* x, double value);
 
+// initialize a vector with a constant value, x[i] = value for 0<=i<n
+void init_threads(int n, double* x, double value, int threadnum);
+
 // scalar product: return sum_i x[i]*y[i] for 0<=i<n
 double dot(int n, double const* x, double const* y);
 
+// scalar product: return sum_i x[i]*y[i] for 0<=i<n
+double dot_threads(int n, double const* x, double const* y, int threadnum);
+
 // vector update: compute y[i] = a*x[i] + b*y[i] for 0<=i<n
 void axpby(int n, double a, double const* x, double b, double* y);
+
+// vector update: compute y[i] = a*x[i] + b*y[i] for 0<=i<n
+void axpby_threads(int n, double a, double const* x, double b, double* y, int threadnum);
 
 //////////////////////////////////
 // Linear operator application  //
