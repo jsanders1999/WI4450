@@ -49,6 +49,7 @@ stencil3d laplace3d_stencil(int nx, int ny, int nz)
 
 int main(int argc, char* argv[])
 {
+  Timer::Timer("Label for the timer");
   int nx, ny, nz;
 
   if      (argc==1) {nx=128;           ny=128;           nz=128;}
