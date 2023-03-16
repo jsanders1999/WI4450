@@ -105,6 +105,71 @@ int main(int argc, char* argv[])
   delete [] b;
 
   Timer::summarize();
+  int nx_arr[4] = {128, 256, 512, 1024};
+  for(int nx: nx_arr){
+
+    // total number of unknowns
+    n=nx*nx*nx;
+
+    dx=1.0/(nx-1), dy=1.0/(ny-1), dz=1.0/(nz-1);
+
+    // Laplace operator
+    L = laplace3d_stencil(nx,ny,nz);
+
+    // solution vector: start with a 0 vector
+    double *x = new double[n];
+
+    // right-hand side
+    double *b = new double[n];
+    init(n, b, 0.0);
+
+    // initialize the rhs with f(x,y,z) in the interior of the domain
+    #pragma omp parallel for schedule(static)
+    for (int k=0; k<nz; k++)
+    {
+        double z = k*dz;
+        for (int j=0; j<ny; j++)
+        {
+        double y = j*dy;
+        for (int i=0; i<nx; i++)
+        {
+            double x = i*dx;
+            int idx = L.index_c(i,j,k);
+            b[idx] = f(x,y,z);
+        }
+        }
+    }
+
+    // Dirichlet boundary conditions at z=0 (others are 0 in our case, initialized above)
+    for (int j=0; j<ny; j++)
+        for (int i=0; i<nx; i++)
+        {
+        b[L.index_c(i,j,0)] -= L.value_b*g_0(i*dx, j*dy);
+        }
+
+    // solve the linear system of equations using CG
+    int numIter, maxIter=500;
+    double resNorm, tol=std::sqrt(std::numeric_limits<double>::epsilon());
+
+    //loop over thread numbers
+    {
+    Timer timer("CG solver for n = " + std::to_string(nx));
+    // solution vector: start with a 0 vector
+    init(n, x, 0.0);
+    try {
+    cg_solver_threads(&L, n, x, b, tol, maxIter, &resNorm, &numIter, 32);
+    } catch(std::exception e)
+    {
+        std::cerr << "Caught an exception in cg_solve: " << e.what() << std::endl;
+        exit(-1);
+    }     
+    }
+    }
+    
+    delete [] x;
+    delete [] b;
+
+    Timer::summarize();
 
   return 0;
 }
