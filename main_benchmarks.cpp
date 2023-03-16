@@ -92,7 +92,7 @@ int main(int argc, char* argv[])
     // solution vector: start with a 0 vector
     init(n, x, 0.0);
     try {
-    cg_solver_threads(&L, n, x, b, tol, maxIter, &resNorm, &numIter, &tn);
+    cg_solver_threads(&L, n, x, b, tol, maxIter, &resNorm, &numIter, tn);
     } catch(std::exception e)
     {
         std::cerr << "Caught an exception in cg_solve: " << e.what() << std::endl;
