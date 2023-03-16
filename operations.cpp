@@ -5,7 +5,7 @@
 void init(int n, double* x, double value)
 {
   // A for loop that gives each of the n elements of array x the same value
-  #pragma omp parallel for
+#pragma omp parallel for
   for(int i = 0; i < n; i++)
   {
     x[i] = value;
@@ -16,7 +16,7 @@ void init(int n, double* x, double value)
 void init_threads(int n, double* x, double value, int threadnum)
 {
   // A for loop that gives each of the n elements of array x the same value
-  #pragma omp parallel for num_threads(threadnum)
+#pragma omp parallel for num_threads(threadnum)
   for(int i = 0; i < n; i++)
   {
     x[i] = value;
@@ -29,7 +29,7 @@ double dot(int n, double const* x, double const* y)
 {
   // A for loop that computes the inner product of n dimensional array x and n dimensional array y
   double res;
-  #pragma omp parallel for 
+#pragma omp parallel for 
   for(int i = 0; i < n; i++)
   {
     res += x[i]*y[i];
@@ -41,19 +41,19 @@ double dot_threads(int n, double const* x, double const* y, int threadnum)
 {
   // A for loop that computes the inner product of n dimensional array x and n dimensional array y
   double res;
-  #pragma omp parallel for num_threads(threadnum)
+#pragma omp parallel for num_threads(threadnum)
   for(int i = 0; i < n; i++)
   {
     res += x[i]*y[i];
   }
-  return res;
+  return res; 
 }
 
 // vector update: compute y[i] = a*x[i] + b*y[i] for 0<=i<n
 void axpby(int n, double a, double const* x, double b, double* y)
 {
   // A for loop that computes a*x+b*y elementwise and stores it in n dimensional array y
-  #pragma omp parallel for 
+#pragma omp parallel for 
   for(int i = 0; i < n; i++)
   {
     y[i] = a*x[i] + b*y[i];
@@ -65,7 +65,7 @@ void axpby(int n, double a, double const* x, double b, double* y)
 void axpby_threads(int n, double a, double const* x, double b, double* y, int threadnum)
 {
   // A for loop that computes a*x+b*y elementwise and stores it in n dimensional array y
-  #pragma omp parallel for num_threads(threadnum)
+#pragma omp parallel for num_threads(threadnum)
   for(int i = 0; i < n; i++)
   {
     y[i] = a*x[i] + b*y[i];

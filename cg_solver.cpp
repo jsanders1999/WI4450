@@ -31,8 +31,8 @@ void cg_solver(stencil3d const* op, int n, double* x, double const* b,
   axpby(n, 1.0, b, -1.0, r);
 
   // p = q = 0
-  init(n, p, 0);
-  init(n, q, 0);
+  init(n, p, 0.0);
+  init(n, q, 0.0);
 
   // start CG iteration
   int iter = -1;
@@ -116,8 +116,8 @@ void cg_solver_threads(stencil3d const* op, int n, double* x, double const* b,
   axpby(n, 1.0, b, -1.0, r);
 
   // p = q = 0
-  init(n, p, 0);
-  init(n, q, 0);
+  init(n, p, 0.0);
+  init(n, q, 0.0);
 
   // start CG iteration
   int iter = -1;
