@@ -87,7 +87,7 @@ int main(int argc, char* argv[])
   double resNorm, tol=std::sqrt(std::numeric_limits<double>::epsilon());
 
   //loop over thread numbers
-  for (int tn =30; tn<=33; tn++){
+  for (int tn =32; tn<=32; tn++){
     Timer timer("CG solver for " + std::to_string(tn) + " threads");
     // solution vector: start with a 0 vector
     init(n, x, 0.0);
@@ -114,7 +114,7 @@ int main(int argc, char* argv[])
     dx=1.0/(nx-1), dy=1.0/(ny-1), dz=1.0/(nz-1);
 
     // Laplace operator
-    stencil3d L = laplace3d_stencil(nx,ny,nz);
+    L = laplace3d_stencil(nx,ny,nz);
 
     // solution vector: start with a 0 vector
     init(n, x, 0.0);
@@ -147,8 +147,8 @@ int main(int argc, char* argv[])
         }
 
     // solve the linear system of equations using CG
-    int numIter, maxIter=500;
-    double resNorm, tol=std::sqrt(std::numeric_limits<double>::epsilon());
+    //int numIter, maxIter=500;
+    //double resNorm, tol=std::sqrt(std::numeric_limits<double>::epsilon());
 
     //loop over thread numbers
     {
