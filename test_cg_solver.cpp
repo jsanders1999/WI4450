@@ -1,10 +1,12 @@
 #include "gtest_mpi.hpp"
 
 #include "operations.hpp"
+#include "cg_solver.hpp"
 
 #include <iostream>
 #include <cmath>
 #include <stdexcept>
+#include <limits>
 
 // Forcing term
 double f(double x, double y, double z)
@@ -89,7 +91,7 @@ TEST(gc_solver, homogenous) {
     exit(-1);
   }
   double *y = new double[n];
-  init(n, y, 0.0)
+  init(n, y, 0.0);
   
   EXPECT_NEAR(x, y, n*std::numeric_limits<double>::epsilon())
   delete [] x;
