@@ -105,7 +105,10 @@ int main(int argc, char* argv[])
   delete [] b;
 
   Timer::summarize();
-  int nx_arr[4] = {128, 256, 512, 1024};
+
+
+  // Loop over nx size
+  int nx_arr[4] = {32, 64, 128, 256, 512, 1024};
   for(int nx: nx_arr){
     std::cout<< nx<<std::endl;
 
@@ -164,10 +167,9 @@ int main(int argc, char* argv[])
         exit(-1);
     }     
     }
-    }
-    
     delete [] x;
     delete [] b;
+    }
 
     Timer::summarize();
 
