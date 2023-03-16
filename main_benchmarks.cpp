@@ -35,6 +35,7 @@ stencil3d laplace3d_stencil(int nx, int ny, int nz)
 
 int main(int argc, char* argv[])
 {
+  {
   int nx, ny, nz;
 
   if      (argc==1) {nx=128;           ny=128;           nz=128;}
@@ -105,16 +106,20 @@ int main(int argc, char* argv[])
 
 
   Timer::summarize();
+  }
 
 
 
   // Loop over nx size
+  {
   int nx_arr[6] = {32, 64, 128, 256, 512, 1024};
   for(int nx: nx_arr){
     std::cout<< nx <<std::endl;
+    int ny = nx;
+    int nz = nx;
 
     // total number of unknowns
-    int n=nx*nx*nx;
+    int n=nx*ny*nz;
 
     double *x1 = new double[n];
     double *b1 = new double[n];
@@ -122,7 +127,7 @@ int main(int argc, char* argv[])
     dx=1.0/(nx-1), dy=1.0/(ny-1), dz=1.0/(nz-1);
 
     // Laplace operator
-    L = laplace3d_stencil(nx,ny,nz);
+    stencil3d L = laplace3d_stencil(nx,ny,nz);
 
     // solution vector: start with a 0 vector
     init(n, x1, 0.0);
