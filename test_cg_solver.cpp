@@ -3,6 +3,8 @@
 #include "operations.hpp"
 
 #include <iostream>
+#include <cmath>
+#include <stdexcept>
 
 // Forcing term
 double f(double x, double y, double z)
