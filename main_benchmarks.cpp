@@ -115,10 +115,11 @@ int main(int argc, char* argv[])
     dx=1.0/(nx-1), dy=1.0/(ny-1), dz=1.0/(nz-1);
 
     // Laplace operator
-    L = laplace3d_stencil(nx,ny,nz);
+    stencil3d L = laplace3d_stencil(nx,ny,nz);
 
     // solution vector: start with a 0 vector
     double *x = new double[n];
+    init(n, x, 0.0);
 
     // right-hand side
     double *b = new double[n];
@@ -155,8 +156,6 @@ int main(int argc, char* argv[])
     //loop over thread numbers
     {
     Timer timer("CG solver for n = " + std::to_string(nx));
-    // solution vector: start with a 0 vector
-    init(n, x, 0.0);
     try {
     cg_solver_threads(&L, n, x, b, tol, maxIter, &resNorm, &numIter, 32);
     } catch(std::exception e)
