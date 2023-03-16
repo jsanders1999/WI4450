@@ -179,7 +179,7 @@ int main(int argc, char* argv[])
     }
     
 
-    Timer::summarize();
+    Timer::summarize();}
 
   return 0;
 }
