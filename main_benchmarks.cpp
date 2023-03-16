@@ -124,7 +124,7 @@ int main(int argc, char* argv[])
     double *x1 = new double[n];
     double *b1 = new double[n];
 
-    dx=1.0/(nx-1), dy=1.0/(ny-1), dz=1.0/(nz-1);
+    double dx=1.0/(nx-1), dy=1.0/(ny-1), dz=1.0/(nz-1);
 
     // Laplace operator
     stencil3d L = laplace3d_stencil(nx,ny,nz);
