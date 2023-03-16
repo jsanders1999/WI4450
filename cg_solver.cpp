@@ -28,7 +28,7 @@ void cg_solver(stencil3d const* op, int n, double* x, double const* b,
   apply_stencil3d(op, x, r);
 
   // r = b - r;
-  axpby(n, 1.0, b, 1.0, r);
+  axpby(n, 1.0, b, -1.0, r);
 
   // p = q = 0
   init(n, p, 0);
