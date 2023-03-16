@@ -100,14 +100,9 @@ int main(int argc, char* argv[])
     }
     
   }
-  
-  delete [] x;
-  delete [] b;
 
   Timer::summarize();
 
-  double *b = new double[n];
-  double *x = new double[n];
   // Loop over nx size
   int nx_arr[6] = {32, 64, 128, 256, 512, 1024};
   for(int nx: nx_arr){
