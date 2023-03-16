@@ -5,7 +5,7 @@
 void init(int n, double* x, double value)
 {
   // A for loop that gives each of the n elements of array x the same value
-//#pragma omp parallel for
+  #pragma omp parallel for
   for(int i = 0; i < n; i++)
   {
     x[i] = value;
@@ -16,7 +16,7 @@ void init(int n, double* x, double value)
 void init_threads(int n, double* x, double value, int threadnum)
 {
   // A for loop that gives each of the n elements of array x the same value
-#pragma omp parallel for num_threads(threadnum)
+  #pragma omp parallel for num_threads(threadnum)
   for(int i = 0; i < n; i++)
   {
     x[i] = value;
@@ -29,7 +29,7 @@ double dot(int n, double const* x, double const* y)
 {
   // A for loop that computes the inner product of n dimensional array x and n dimensional array y
   double res;
-//#pragma omp parallel for 
+  #pragma omp parallel for reduction(+:res)
   for(int i = 0; i < n; i++)
   {
     res += x[i]*y[i];
@@ -41,7 +41,7 @@ double dot_threads(int n, double const* x, double const* y, int threadnum)
 {
   // A for loop that computes the inner product of n dimensional array x and n dimensional array y
   double res;
-#pragma omp parallel for num_threads(threadnum)
+  #pragma omp parallel for reduction(+:res) num_threads(threadnum)
   for(int i = 0; i < n; i++)
   {
     res += x[i]*y[i];
