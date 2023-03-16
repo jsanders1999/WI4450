@@ -78,6 +78,7 @@ void apply_stencil3d(stencil3d const* S,
         double const* u, double* v)
 {
   // A for loop over the three dimensions that applies the stencil S to vector u and stores it in v
+  // Possible speedup improvement: Use case switching instead of in statements
 #pragma omp parallel for 
   for(int i = 0; i < S->nx; i++){
     for(int j = 0; j < S->ny; j++){

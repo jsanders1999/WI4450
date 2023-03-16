@@ -113,11 +113,11 @@ void cg_solver_threads(stencil3d const* op, int n, double* x, double const* b,
   apply_stencil3d_threads(op, x, r, threadnum);
 
   // r = b - r;
-  axpby(n, 1.0, b, -1.0, r);
+  axpby_threads(n, 1.0, b, -1.0, r, threadnum);
 
   // p = q = 0
-  init(n, p, 0.0);
-  init(n, q, 0.0);
+  init_threads(n, p, 0.0, threadnum);
+  init_threads(n, q, 0.0, threadnum);
 
   // start CG iteration
   int iter = -1;
@@ -154,7 +154,7 @@ void cg_solver_threads(stencil3d const* op, int n, double* x, double const* b,
     apply_stencil3d_threads(op, p, q, threadnum);
 
     // beta = <p,q>
-    beta = dot(n, p, q);
+    beta = dot_threads(n, p, q, threadnum);
 
     alpha = rho / beta;
 
