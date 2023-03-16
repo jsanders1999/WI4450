@@ -37,7 +37,7 @@ stencil3d laplace3d_stencil(int nx, int ny, int nz)
 }
 
 
-TEST(gc_solver, homogenous) {
+TEST(gc_solver, zero) {
   int nx = 16, ny = 16, nz = 16;
 
   // total number of unknowns
@@ -93,7 +93,7 @@ TEST(gc_solver, homogenous) {
   double *y = new double[n];
   init(n, y, 0.0);
   for (int i=0; i<n; i++){
-    EXPECT_NEAR(x[i], y[i], n*std::numeric_limits<double>::epsilon());
+    EXPECT_NEAR(x[i], y[i], std::numeric_limits<double>::epsilon());
   }
   
   delete [] x;
