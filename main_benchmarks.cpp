@@ -100,8 +100,13 @@ int main(int argc, char* argv[])
     }
     
   }
+  delete [] x;
+  delete [] b;
+
 
   Timer::summarize();
+
+
 
   // Loop over nx size
   int nx_arr[6] = {32, 64, 128, 256, 512, 1024};
@@ -111,17 +116,19 @@ int main(int argc, char* argv[])
     // total number of unknowns
     int n=nx*nx*nx;
 
+    double *x1 = new double[n];
+    double *b1 = new double[n];
+
     dx=1.0/(nx-1), dy=1.0/(ny-1), dz=1.0/(nz-1);
 
     // Laplace operator
     L = laplace3d_stencil(nx,ny,nz);
 
     // solution vector: start with a 0 vector
-    init(n, x, 0.0);
-    std::cout << x[n]<< std::endl;
+    init(n, x1, 0.0);
 
     // right-hand side
-    init(n, b, 0.0);
+    init(n, b1, 0.0);
 
     // initialize the rhs with f(x,y,z) in the interior of the domain
     #pragma omp parallel for schedule(static)
@@ -135,7 +142,7 @@ int main(int argc, char* argv[])
         {
             double x = i*dx;
             int idx = L.index_c(i,j,k);
-            b[idx] = f(x,y,z);
+            b1[idx] = f(x,y,z);
         }
         }
     }
@@ -144,7 +151,7 @@ int main(int argc, char* argv[])
     for (int j=0; j<ny; j++)
         for (int i=0; i<nx; i++)
         {
-        b[L.index_c(i,j,0)] -= L.value_b*g_0(i*dx, j*dy);
+        b1[L.index_c(i,j,0)] -= L.value_b*g_0(i*dx, j*dy);
         }
 
     // solve the linear system of equations using CG
@@ -155,7 +162,7 @@ int main(int argc, char* argv[])
     {
     Timer timer("CG solver for n = " + std::to_string(nx));
     try {
-    cg_solver_threads(&L, n, x, b, tol, maxIter, &resNorm, &numIter, 32);
+    cg_solver_threads(&L, n, x1, b1, tol, maxIter, &resNorm, &numIter, 32);
     } catch(std::exception e)
     {
         std::cerr << "Caught an exception in cg_solve: " << e.what() << std::endl;
@@ -164,8 +171,8 @@ int main(int argc, char* argv[])
     }
     }
 
-    delete [] x;
-    delete [] b;
+    delete [] x1;
+    delete [] b1;
 
     Timer::summarize();
 
