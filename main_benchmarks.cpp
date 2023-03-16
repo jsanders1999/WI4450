@@ -118,7 +118,7 @@ int main(int argc, char* argv[])
 
     // solution vector: start with a 0 vector
     init(n, x, 0.0);
-    std::cout << x[n]<< std::endl
+    std::cout << x[n]<< std::endl;
 
     // right-hand side
     init(n, b, 0.0);
