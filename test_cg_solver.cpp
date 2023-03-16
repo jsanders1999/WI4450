@@ -48,7 +48,7 @@ TEST(gc_solver, zero) {
   // Laplace operator
   stencil3d L = laplace3d_stencil(nx,ny,nz);
 
-  // solution vector: start with a 0 vector
+  // solution vector: start with a -1.0 vector
   double *x = new double[n];
   init(n, x, -1.0);
 
