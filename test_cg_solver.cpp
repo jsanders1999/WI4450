@@ -50,7 +50,7 @@ TEST(gc_solver, zero) {
 
   // solution vector: start with a 0 vector
   double *x = new double[n];
-  init(n, x, 0.0);
+  init(n, x, 1.0);
 
   // right-hand side
   double *b = new double[n];
