@@ -1,36 +1,19 @@
+#include "gtest_mpi.hpp"
+
 #include "operations.hpp"
-#include "cg_solver.hpp"
-#include "timer.hpp"
 
 #include <iostream>
-#include <cmath>
-#include <limits>
-
-#include <cmath>
-
-// Main program that solves the 3D Poisson equation
-// on a unit cube. The grid size (nx,ny,nz) can be 
-// passed to the executable like this:
-//
-// ./main_cg_poisson <nx> <ny> <nz>
-//
-// or simply ./main_cg_poisson <nx> for ny=nz=nx.
-// If no arguments are given, the default nx=ny=nz=128 is used.
-//
-// Boundary conditions and forcing term f(x,y,z) are
-// hard-coded in this file. See README.md for details
-// on the PDE and boundary conditions.
 
 // Forcing term
 double f(double x, double y, double z)
 {
-  return z*sin(2*M_PI*x)*std::sin(M_PI*y) + 8*z*z*z;
+  return 0.0;
 }
 
 // boundary condition at z=0
 double g_0(double x, double y)
 {
-  return x*(1.0-x)*y*(1-y);
+  return 0.0;
 }
 
 stencil3d laplace3d_stencil(int nx, int ny, int nz)
@@ -49,16 +32,9 @@ stencil3d laplace3d_stencil(int nx, int ny, int nz)
   return L;
 }
 
-int main(int argc, char* argv[])
-{
-  int nx, ny, nz;
 
-  if      (argc==1) {nx=128;           ny=128;           nz=128;}
-  else if (argc==2) {nx=atoi(argv[1]); ny=nx;            nz=nx;}
-  else if (argc==4) {nx=atoi(argv[1]); ny=atoi(argv[2]); nz=atoi(argv[3]);}
-  else {std::cerr << "Invalid number of arguments (should be 0, 1 or 3)"<<std::endl; exit(-1);}
-  if (ny<0) ny=nx;
-  if (nz<0) nz=nx;
+TEST(gc_solver, homogenous) {
+  int nx = 16, ny = 16, nz = 16;
 
   // total number of unknowns
   int n=nx*ny*nz;
@@ -110,10 +86,12 @@ int main(int argc, char* argv[])
     std::cerr << "Caught an exception in cg_solve: " << e.what() << std::endl;
     exit(-1);
   }
+  double *y = new double[n];
+  init(n, y, 0.0)
+  
+  EXPECT_NEAR(x, y, n*std::numeric_limits<double>::epsilon())
   delete [] x;
+  delete [] y;
   delete [] b;
 
-  Timer::summarize();
-
-  return 0;
 }
