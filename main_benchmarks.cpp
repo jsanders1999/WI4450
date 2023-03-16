@@ -106,7 +106,8 @@ int main(int argc, char* argv[])
 
   Timer::summarize();
 
-
+  double *b = new double[n];
+  double *x = new double[n];
   // Loop over nx size
   int nx_arr[6] = {32, 64, 128, 256, 512, 1024};
   for(int nx: nx_arr){
@@ -121,11 +122,9 @@ int main(int argc, char* argv[])
     stencil3d L = laplace3d_stencil(nx,ny,nz);
 
     // solution vector: start with a 0 vector
-    double *x = new double[n];
     init(n, x, 0.0);
 
     // right-hand side
-    double *b = new double[n];
     init(n, b, 0.0);
 
     // initialize the rhs with f(x,y,z) in the interior of the domain
@@ -167,9 +166,10 @@ int main(int argc, char* argv[])
         exit(-1);
     }     
     }
+    }
+
     delete [] x;
     delete [] b;
-    }
 
     Timer::summarize();
 
