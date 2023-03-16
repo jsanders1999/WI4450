@@ -112,6 +112,9 @@ int main(int argc, char* argv[])
   Timer timer3("After cg_solver");
   delete [] x;
   delete [] b;
+  ~timer1;
+  ~timer2;
+  ~timer3;
 
   Timer::summarize();
 
