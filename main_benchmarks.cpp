@@ -88,7 +88,7 @@ int main(int argc, char* argv[])
 
   //loop over thread numbers
   for (int tn =1; tn<=48; tn++){
-    Timer timer("CG solver for " + std::to_string(tn) " threads");
+    Timer timer("CG solver for " + std::to_string(tn) + " threads");
     // solution vector: start with a 0 vector
     init(n, x, 0.0);
     try {
