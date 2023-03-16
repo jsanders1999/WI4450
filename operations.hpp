@@ -80,3 +80,7 @@ typedef struct stencil3d
 void apply_stencil3d(stencil3d const* S,
         double const* u, double* v);
 
+//! apply a 7-point stencil to a vector, v = op*x using threadnum threads
+void apply_stencil3d_threads(stencil3d const* S,
+        double const* u, double* v, int threadnum);
+
