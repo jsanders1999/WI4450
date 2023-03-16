@@ -49,7 +49,7 @@ stencil3d laplace3d_stencil(int nx, int ny, int nz)
 
 int main(int argc, char* argv[])
 {
-  Timer("Timer for main_cg_poisson");
+  Timer("Start of program");
   int nx, ny, nz;
 
   if      (argc==1) {nx=128;           ny=128;           nz=128;}
@@ -76,7 +76,7 @@ int main(int argc, char* argv[])
   init(n, b, 0.0);
 
   // initialize the rhs with f(x,y,z) in the interior of the domain
-//#pragma omp parallel for schedule(static)
+  #pragma omp parallel for schedule(static)
   for (int k=0; k<nz; k++)
   {
     double z = k*dz;
@@ -101,7 +101,7 @@ int main(int argc, char* argv[])
   // solve the linear system of equations using CG
   int numIter, maxIter=500;
   double resNorm, tol=std::sqrt(std::numeric_limits<double>::epsilon());
-
+  Timer("Before cg_solver");
   try {
   cg_solver(&L, n, x, b, tol, maxIter, &resNorm, &numIter);
   } catch(std::exception e)
@@ -109,6 +109,7 @@ int main(int argc, char* argv[])
     std::cerr << "Caught an exception in cg_solve: " << e.what() << std::endl;
     exit(-1);
   }
+  Timer("After cg_solver");
   delete [] x;
   delete [] b;
 
