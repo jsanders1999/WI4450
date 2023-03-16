@@ -93,7 +93,7 @@ TEST(gc_solver, homogenous) {
   double *y = new double[n];
   init(n, y, 0.0);
   
-  EXPECT_NEAR(x, y, n*std::numeric_limits<double>::epsilon())
+  EXPECT_NEAR(x, y, n*std::numeric_limits<double>::epsilon());
   delete [] x;
   delete [] y;
   delete [] b;
