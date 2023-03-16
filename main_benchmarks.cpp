@@ -169,10 +169,10 @@ int main(int argc, char* argv[])
         exit(-1);
     }     
     }
-    }
-
     delete [] x1;
     delete [] b1;
+    }
+    
 
     Timer::summarize();
 
