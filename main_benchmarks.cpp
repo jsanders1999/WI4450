@@ -113,7 +113,7 @@ int main(int argc, char* argv[])
   // Loop over nx size
   {
   //int nx_arr[6] = {32, 64, 128, 256, 512, 1024};
-  int x_arr[0] = {};
+  int nx_arr[0] = {};
   for(int nx: nx_arr){
     std::cout<< nx <<std::endl;
     int ny = nx;
