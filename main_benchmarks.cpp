@@ -88,7 +88,7 @@ int main(int argc, char* argv[])
   double resNorm, tol=std::sqrt(std::numeric_limits<double>::epsilon());
 
   //loop over thread numbers
-  for (int tn =32; tn<=32; tn++){
+  for (int tn =1; tn<=48; tn++){
     Timer timer("CG solver for " + std::to_string(tn) + " threads");
     // solution vector: start with a 0 vector
     init(n, x, 0.0);
@@ -112,7 +112,8 @@ int main(int argc, char* argv[])
 
   // Loop over nx size
   {
-  int nx_arr[6] = {32, 64, 128, 256, 512, 1024};
+  //int nx_arr[6] = {32, 64, 128, 256, 512, 1024};
+  int x_arr[0] = {};
   for(int nx: nx_arr){
     std::cout<< nx <<std::endl;
     int ny = nx;
