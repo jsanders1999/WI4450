@@ -168,7 +168,7 @@ int main(int argc, char* argv[])
     {
     Timer timer("CG solver for n = " + std::to_string(nx));
     try {
-    cg_solver_threads(&L, n, x1, b1, tol, maxIter, &resNorm, &numIter, 32);
+    cg_solver_threads(&L, n, x1, b1, tol, maxIter, &resNorm, &numIter, 16);
     } catch(std::exception e)
     {
         std::cerr << "Caught an exception in cg_solve: " << e.what() << std::endl;
