@@ -112,7 +112,7 @@ int main(int argc, char* argv[])
 
   // Loop over nx size
   {
-  int nx_arr[6] = {32, 64, 128, 256, 512, 1024};
+  int nx_arr[5] = {32, 64, 128, 256, 512};
   //int nx_arr[0] = {};
   for(int nx: nx_arr){
     std::cout<< nx <<std::endl;
@@ -161,7 +161,7 @@ int main(int argc, char* argv[])
         }
 
     // solve the linear system of equations using CG
-    int numIter, maxIter=2000;
+    int numIter, maxIter=10000;
     double resNorm, tol=std::sqrt(std::numeric_limits<double>::epsilon());
 
     //loop over thread numbers
