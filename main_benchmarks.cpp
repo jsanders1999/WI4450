@@ -88,7 +88,7 @@ int main(int argc, char* argv[])
   double resNorm, tol=std::sqrt(std::numeric_limits<double>::epsilon());
 
   //loop over thread numbers
-  for (int tn =1; tn<=0; tn+=2){
+  for (int tn =1; tn<=28; tn+=1){
     Timer timer("CG solver for " + std::to_string(tn) + " threads");
     // solution vector: start with a 0 vector
     init(n, x, 0.0);
@@ -168,7 +168,7 @@ int main(int argc, char* argv[])
     {
     Timer timer("CG solver for n = " + std::to_string(nx));
     try {
-    cg_solver_threads(&L, n, x1, b1, tol, maxIter, &resNorm, &numIter, 16);
+    cg_solver_threads(&L, n, x1, b1, tol, maxIter, &resNorm, &numIter, 32);
     } catch(std::exception e)
     {
         std::cerr << "Caught an exception in cg_solve: " << e.what() << std::endl;
