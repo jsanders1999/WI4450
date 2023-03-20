@@ -81,9 +81,9 @@ void apply_stencil3d(stencil3d const* S,
   // Possible speedup improvement: Use case switching instead of in statements
 //#pragma omp parallel for 
   
-  for(int k = 0; k < S->nz; k++){
-    for(int i = 0; i < S->nx; i++){
-      for(int j = 0; j < S->ny; j++){
+  for(int i = 0; i < S->nx; i++){
+    for(int j = 0; j < S->ny; j++){
+      for(int k = 0; k < S->nz; k++){
         // Add the center value of the stencil
         v[S->index_c(i,j,k)] = S->value_c*u[S->index_c(i,j,k)];
 
