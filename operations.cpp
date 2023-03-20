@@ -61,16 +61,17 @@ void axpby(int n, double a, double const* x, double b, double* y)
   return;
 }
 
-//void twice_axpby(int n, double a, double const* x, double b, double* y, double c, double const* z, double d, double* s)
-//{
+void twice_axpby(int n, double a, double const* x, double b, double* y, double c, double const* z, double d, double* s)
+{
   // A for loop that computes a*x+b*y elementwise and stores it in n dimensional array y
-//  #pragma omp parallel for 
-//  for(int i = 0; i < n; i++)
-//  {
-//    y[i] = a*x[i] + b*y[i];
-//  }
-//  return;
-//}
+  #pragma omp parallel for 
+  for(int i = 0; i < n; i++)
+  {
+    y[i] = a*x[i] + b*y[i];
+    s[i] = c*z[i] + d*s[i];
+  }
+  return;
+}
 
 // vector update: compute y[i] = a*x[i] + b*y[i] for 0<=i<n
 void axpby_threads(int n, double a, double const* x, double b, double* y, int threadnum)
@@ -90,7 +91,7 @@ void apply_stencil3d(stencil3d const* S,
 {
   // A for loop over the three dimensions that applies the stencil S to vector u and stores it in v
   // Possible speedup improvement: Use case switching instead of in statements
-  #pragma omp parallel for 
+  #pragma omp parallel for collapse(3)
   for(int k = 0; k < S->nz; k++){
     for(int j = 0; j < S->ny; j++){
       for(int i = 0; i < S->nx; i++){
