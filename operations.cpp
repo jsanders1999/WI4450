@@ -53,13 +53,24 @@ double dot_threads(int n, double const* x, double const* y, int threadnum)
 void axpby(int n, double a, double const* x, double b, double* y)
 {
   // A for loop that computes a*x+b*y elementwise and stores it in n dimensional array y
-//#pragma omp parallel for 
+  #pragma omp parallel for 
   for(int i = 0; i < n; i++)
   {
     y[i] = a*x[i] + b*y[i];
   }
   return;
 }
+
+//void twice_axpby(int n, double a, double const* x, double b, double* y, double c, double const* z, double d, double* s)
+//{
+  // A for loop that computes a*x+b*y elementwise and stores it in n dimensional array y
+//  #pragma omp parallel for 
+//  for(int i = 0; i < n; i++)
+//  {
+//    y[i] = a*x[i] + b*y[i];
+//  }
+//  return;
+//}
 
 // vector update: compute y[i] = a*x[i] + b*y[i] for 0<=i<n
 void axpby_threads(int n, double a, double const* x, double b, double* y, int threadnum)
