@@ -79,8 +79,7 @@ void apply_stencil3d(stencil3d const* S,
 {
   // A for loop over the three dimensions that applies the stencil S to vector u and stores it in v
   // Possible speedup improvement: Use case switching instead of in statements
-//#pragma omp parallel for 
-  
+  #pragma omp parallel for 
   
   for(int k = 0; k < S->nz; k++){
     for(int j = 0; j < S->ny; j++){
@@ -133,9 +132,9 @@ void apply_stencil3d_threads(stencil3d const* S,
 {
   // A for loop over the three dimensions that applies the stencil S to vector u and stores it in v
 #pragma omp parallel for num_threads(threadnum)
-  for(int i = 0; i < S->nx; i++){
+  for(int k = 0; k < S->nz; k++){
     for(int j = 0; j < S->ny; j++){
-      for(int k = 0; k < S->nz; k++){
+      for(int i = 0; i < S->nx; i++){
         // Add the center value of the stencil
         v[S->index_c(i,j,k)] = S->value_c*u[S->index_c(i,j,k)];
 

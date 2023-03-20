@@ -99,7 +99,7 @@ int main(int argc, char* argv[])
     }
 
   // solve the linear system of equations using CG
-  int numIter, maxIter=500;
+  int numIter, maxIter=50000;
   double resNorm, tol=std::sqrt(std::numeric_limits<double>::epsilon());
   {Timer timer2("Before cg_solver");
   try {
