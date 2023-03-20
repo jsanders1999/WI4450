@@ -61,6 +61,7 @@ void axpby(int n, double a, double const* x, double b, double* y)
   return;
 }
 
+// combines two axpby vector updates into one, with only one for loop
 void twice_axpby(int n, double a, double const* x, double b, double* y, double c, double const* z, double d, double* s)
 {
   // A for loop that computes a*x+b*y elementwise and stores it in n dimensional array y

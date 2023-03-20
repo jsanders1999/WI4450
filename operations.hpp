@@ -22,6 +22,7 @@ double dot_threads(int n, double const* x, double const* y, int threadnum);
 // vector update: compute y[i] = a*x[i] + b*y[i] for 0<=i<n
 void axpby(int n, double a, double const* x, double b, double* y);
 
+// vector update: compute y[i] = a*x[i] + b*y[i], s[i] = c*z[i] + d*s[i] for 0<=i<n
 void twice_axpby(int n, double a, double const* x, double b, double* y, double c, double const* z, double d, double* s);
 
 // vector update: compute y[i] = a*x[i] + b*y[i] for 0<=i<n
