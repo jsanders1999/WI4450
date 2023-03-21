@@ -101,7 +101,7 @@ void apply_stencil3d(stencil3d const* S,
         // Add the east and/or west values of the stencil (x direction)
         v[S->index_c(i,j,k)] += ((i==0) ? 0 : S->value_e*u[S->index_e(i,j,k)]) + ((i==S->nx-1) ? 0 : S->value_w*u[S->index_e(i,j,k)]) ;
         // Add the north and/or south values of the stencil (y direction)
-        v[S->index_c(i,j,k)] += ((j==0 ? 0) : S->value_n*u[S->index_e(i,j,k)]) + ((j==S->ny-1) ? 0 : S->value_s*u[S->index_e(i,j,k)]) ;
+        v[S->index_c(i,j,k)] += ((j==0) ? 0 : S->value_n*u[S->index_e(i,j,k)]) + ((j==S->ny-1) ? 0 : S->value_s*u[S->index_e(i,j,k)]) ;
         // Add the top and/or bottom values of the stencil (z direction)
         v[S->index_c(i,j,k)] += ((k==0) ? 0 : S->value_t*u[S->index_e(i,j,k)]) + ((k==S->nz-1) ? 0 : S->value_b*u[S->index_e(i,j,k)]) ;
 
