@@ -7,6 +7,7 @@
 #SBATCH --mem=0
 #SBATCH --account=Education-EEMCS-Courses-WI4450
 #SBATCH --reservation=subnumatest
+#SBATCH --time=00:20:00
 
 # run CG for a n^3 Poisson problem
 export OMP_NUM_THREADS=8
