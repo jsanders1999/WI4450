@@ -98,8 +98,14 @@ void apply_stencil3d(stencil3d const* S,
       for(int i = 0; i < S->nx; i++){
         // Add the center value of the stencil
         v[S->index_c(i,j,k)] = S->value_c*u[S->index_c(i,j,k)];
-
         // Add the east and/or west values of the stencil (x direction)
+        v[S->index_c(i,j,k)] += (i==0 ? 0 : S->value_e*u[S->index_e(i,j,k)]) + (i==S->nx-1 ? 0 : S->value_w*u[S->index_e(i,j,k)]) ;
+        // Add the north and/or south values of the stencil (y direction)
+        v[S->index_c(i,j,k)] += (j==0 ? 0 : S->value_n*u[S->index_e(i,j,k)]) + (j==S->nx-1 ? 0 : S->value_s*u[S->index_e(i,j,k)]) ;
+        // Add the top and/or bottom values of the stencil (z direction)
+        v[S->index_c(i,j,k)] += (k==0 ? 0 : S->value_t*u[S->index_e(i,j,k)]) + (k==S->nx-1 ? 0 : S->value_b*u[S->index_e(i,j,k)]) ;
+
+/*         // Add the east and/or west values of the stencil (x direction)
         if(i==0){// Boundary x=0
           v[S->index_c(i,j,k)] += S->value_e*u[S->index_e(i,j,k)];
         }
@@ -130,7 +136,7 @@ void apply_stencil3d(stencil3d const* S,
         }
         else{// Interior 0<z<1
           v[S->index_c(i,j,k)] += S->value_t*u[S->index_t(i,j,k)] + S->value_b*u[S->index_b(i,j,k)];
-        }
+        } */
 
       }
     }
