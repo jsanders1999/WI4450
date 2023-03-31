@@ -138,73 +138,91 @@ void apply_stencil3d_noif(stencil3d const* S,
         double const* u, double* v)
 {
   // A for loop over the three dimensions that applies the stencil S to vector u and stores it in v
-  //#pragma omp parallel for
-
 
   //    0,    0,    0
   v[S->index_c(0,0,0)] = S->value_c*u[S->index_c(0,0,0)] + S->value_e*u[S->index_e(0,0,0)] + S->value_n*u[S->index_n(0,0,0)] + S->value_t*u[S->index_t(0,0,0)];
   //  ...,    0,    0
-  //#pragma omp parallel for
   for(int i = 1; i < S->nx-1; i++){
     v[S->index_c(i,0,0)] = S->value_c*u[S->index_c(i,0,0)] + S->value_e*u[S->index_e(i,0,0)] + S->value_w*u[S->index_w(i,0,0)] + S->value_n*u[S->index_n(i,0,0)] + S->value_t*u[S->index_t(i,0,0)];
   }
   // nx-1,    0,    0
   v[S->index_c(S->nx-1,0,0)] = S->value_c*u[S->index_c(S->nx-1,0,0)] + S->value_w*u[S->index_w(S->nx-1,0,0)] + S->value_n*u[S->index_n(S->nx-1,0,0)] + S->value_t*u[S->index_t(S->nx-1,0,0)];
 
-  //#pragma omp parallel for collapse(2)
+  //    0,  ...,    0
   for(int j = 1; j < S->ny-1; j++){
-    //    0,  ...,    0
     v[S->index_c(0,j,0)] = S->value_c*u[S->index_c(0,j,0)] + S->value_e*u[S->index_e(0,j,0)] + S->value_n*u[S->index_n(0,j,0)] + S->value_s*u[S->index_s(0,j,0)] + S->value_t*u[S->index_t(0,j,0)];
-    //  ...,  ...,    0
+  }
+  //  ...,  ...,    0
+  for(int j = 1; j < S->ny-1; j++){
     for(int i = 1; i < S->nx-1; i++){
       v[S->index_c(i,j,0)] = S->value_c*u[S->index_c(i,j,0)] + S->value_e*u[S->index_e(i,j,0)] + S->value_w*u[S->index_w(i,j,0)] + S->value_n*u[S->index_n(i,j,0)] + S->value_s*u[S->index_s(i,j,0)] + S->value_t*u[S->index_t(i,j,0)];
     }
-    // nx-1,  ...,    0
+  }
+  // nx-1,  ...,    0
+  for(int j = 1; j < S->ny-1; j++){
     v[S->index_c(S->nx-1,j,0)] = S->value_c*u[S->index_c(S->nx-1,j,0)] + S->value_w*u[S->index_w(S->nx-1,j,0)] + S->value_n*u[S->index_n(S->nx-1,j,0)]+ S->value_s*u[S->index_s(S->nx-1,j,0)] + S->value_t*u[S->index_t(S->nx-1,j,0)];
   }
 
   //    0, ny-1,    0
   v[S->index_c(0,S->ny-1,0)] = S->value_c*u[S->index_c(0,S->ny-1,0)] + S->value_e*u[S->index_e(0,S->ny-1,0)] + S->value_s*u[S->index_s(0,S->ny-1,0)] + S->value_t*u[S->index_t(0,S->ny-1,0)];
   //  ..., ny-1,    0
-  //#pragma omp parallel for
   for(int i = 1; i < S->nx-1; i++){
     v[S->index_c(i,S->ny-1,0)] = S->value_c*u[S->index_c(i,S->ny-1,0)] + S->value_e*u[S->index_e(i,S->ny-1,0)] + S->value_w*u[S->index_w(i,S->ny-1,0)] + S->value_s*u[S->index_s(i,S->ny-1,0)] + S->value_t*u[S->index_t(i,S->ny-1,0)];
   }
   // nx-1, ny-1,    0
-   v[S->index_c(S->nx-1,S->ny-1,0)] = S->value_c*u[S->index_c(S->nx-1,S->ny-1,0)] + S->value_w*u[S->index_w(S->nx-1,S->ny-1,0)] + S->value_s*u[S->index_s(S->nx-1,S->ny-1,0)] + S->value_t*u[S->index_t(S->nx-1,S->ny-1,0)];
+  v[S->index_c(S->nx-1,S->ny-1,0)] = S->value_c*u[S->index_c(S->nx-1,S->ny-1,0)] + S->value_w*u[S->index_w(S->nx-1,S->ny-1,0)] + S->value_s*u[S->index_s(S->nx-1,S->ny-1,0)] + S->value_t*u[S->index_t(S->nx-1,S->ny-1,0)];
 
 
+  
+  //    0,    0,  ...
   for(int k = 1; k < S->nz-1; k++){
-    //    0,    0,  ...
     v[S->index_c(0,0,k)] = S->value_c*u[S->index_c(0,0,k)] + S->value_e*u[S->index_e(0,0,k)] + S->value_n*u[S->index_n(0,0,k)] + S->value_t*u[S->index_t(0,0,k)] + S->value_b*u[S->index_b(0,0,k)];
-    //  ...,    0,  ...
-    //#pragma omp parallel for
+  }
+  //  ...,    0,  ...
+  for(int k = 1; k < S->nz-1; k++){
     for(int i = 1; i < S->nx-1; i++){
       v[S->index_c(i,0,k)] = S->value_c*u[S->index_c(i,0,k)] + S->value_e*u[S->index_e(i,0,k)] + S->value_w*u[S->index_w(i,0,k)] + S->value_n*u[S->index_n(i,0,k)] + S->value_t*u[S->index_t(i,0,k)] + S->value_b*u[S->index_b(i,0,k)];
     }
-    // nx-1,    0,  ...
+  }
+  // nx-1,    0,  ...
+  for(int k = 1; k < S->nz-1; k++){
     v[S->index_c(S->nx-1,0,k)] = S->value_c*u[S->index_c(S->nx-1,0,k)] + S->value_w*u[S->index_w(S->nx-1,0,k)] + S->value_n*u[S->index_n(S->nx-1,0,k)] + S->value_t*u[S->index_t(S->nx-1,0,k)] + S->value_b*u[S->index_b(S->nx-1,0,k)];
+  }
 
-    //#pragma omp parallel for collapse(2)
+
+  //    0,  ...,  ...
+  for(int k = 1; k < S->nz-1; k++){
     for(int j = 1; j < S->ny-1; j++){
-      //    0,  ...,  ...
       v[S->index_c(0,j,k)] = S->value_c*u[S->index_c(0,j,k)] + S->value_e*u[S->index_e(0,j,k)] + S->value_n*u[S->index_n(0,j,k)] + S->value_s*u[S->index_s(0,j,k)] + S->value_t*u[S->index_t(0,j,k)] + S->value_b*u[S->index_b(0,j,k)] ;
-      //  ...,  ...,  ...
+    }
+  }
+  //  ...,  ...,  ...
+  for(int k = 1; k < S->nz-1; k++){
+    for(int j = 1; j < S->ny-1; j++){
       for(int i = 1; i < S->nx-1; i++){
         v[S->index_c(i,j,k)] = S->value_c*u[S->index_c(i,j,k)] + S->value_e*u[S->index_e(i,j,k)] + S->value_w*u[S->index_w(i,j,k)] + S->value_n*u[S->index_n(i,j,k)] + S->value_s*u[S->index_s(i,j,k)] + S->value_t*u[S->index_t(i,j,k)] + S->value_b*u[S->index_b(i,j,k)];
       }
-      // nx-1,  ...,  ...
+    }
+  }
+  // nx-1,  ...,  ...
+  for(int k = 1; k < S->nz-1; k++){
+    for(int j = 1; j < S->ny-1; j++){
       v[S->index_c(S->nx-1,j,k)] = S->value_c*u[S->index_c(S->nx-1,j,k)] + S->value_w*u[S->index_w(S->nx-1,j,k)] + S->value_n*u[S->index_n(S->nx-1,j,k)]+ S->value_s*u[S->index_s(S->nx-1,j,k)] + S->value_t*u[S->index_t(S->nx-1,j,k)] + S->value_b*u[S->index_b(S->nx-1,j,k)];
     }
+  }
     
-    //    0, ny-1,  ...
+  //    0, ny-1,  ...
+  for(int k = 1; k < S->nz-1; k++){
     v[S->index_c(0,S->ny-1,k)] = S->value_c*u[S->index_c(0,S->ny-1,k)] + S->value_e*u[S->index_e(0,S->ny-1,k)] + S->value_s*u[S->index_s(0,S->ny-1,k)] + S->value_t*u[S->index_t(0,S->ny-1,k)] + S->value_b*u[S->index_b(0,S->ny-1,k)];
-    //  ..., ny-1,  ...
-    //#pragma omp parallel for
+  }  
+  //  ..., ny-1,  ...
+  for(int k = 1; k < S->nz-1; k++){
     for(int i = 1; i < S->nx-1; i++){
       v[S->index_c(i,S->ny-1,k)] = S->value_c*u[S->index_c(i,S->ny-1,k)] + S->value_e*u[S->index_e(i,S->ny-1,k)] + S->value_w*u[S->index_w(i,S->ny-1,k)] + S->value_s*u[S->index_s(i,S->ny-1,k)] + S->value_t*u[S->index_t(i,S->ny-1,k)] + S->value_b*u[S->index_b(i,S->ny-1,k)] ;
     }
-    // nx-1, ny-1,  ...
+  }
+  // nx-1, ny-1,  ...
+  for(int k = 1; k < S->nz-1; k++){
     v[S->index_c(S->nx-1,S->ny-1,k)] = S->value_c*u[S->index_c(S->nx-1,S->ny-1,k)] + S->value_w*u[S->index_w(S->nx-1,S->ny-1,k)] + S->value_s*u[S->index_s(S->nx-1,S->ny-1,k)] + S->value_t*u[S->index_t(S->nx-1,S->ny-1,k)] + S->value_b*u[S->index_b(S->nx-1,S->ny-1,k)];
   }
   
@@ -212,29 +230,30 @@ void apply_stencil3d_noif(stencil3d const* S,
   //    0,    0, nz-1
   v[S->index_c(0,0,S->nz-1)] = S->value_c*u[S->index_c(0,0,S->nz-1)] + S->value_e*u[S->index_e(0,0,S->nz-1)] + S->value_n*u[S->index_n(0,0,S->nz-1)] + S->value_b*u[S->index_b(0,0,S->nz-1)];
   //  ...,    0, nz-1
-  //#pragma omp parallel for
   for(int i = 1; i < S->nx-1; i++){
     v[S->index_c(i,0,S->nz-1)] = S->value_c*u[S->index_c(i,0,S->nz-1)] + S->value_e*u[S->index_e(i,0,S->nz-1)] + S->value_w*u[S->index_w(i,0,S->nz-1)] + S->value_n*u[S->index_n(i,0,S->nz-1)] + S->value_b*u[S->index_b(i,0,S->nz-1)];
   }
   // nx-1,    0, nz-1
   v[S->index_c(S->nx-1,0,S->nz-1)] = S->value_c*u[S->index_c(S->nx-1,0,S->nz-1)] + S->value_w*u[S->index_w(S->nx-1,0,S->nz-1)] + S->value_n*u[S->index_n(S->nx-1,0,S->nz-1)] + S->value_b*u[S->index_b(S->nx-1,0,S->nz-1)];
 
-  //#pragma omp parallel for collapse(2)
+  //    0,  ..., nz-1
   for(int j = 1; j < S->ny-1; j++){
-    //    0,  ..., nz-1
     v[S->index_c(0,j,S->nz-1)] = S->value_c*u[S->index_c(0,j,S->nz-1)] + S->value_e*u[S->index_e(0,j,S->nz-1)] + S->value_n*u[S->index_n(0,j,S->nz-1)] + S->value_s*u[S->index_s(0,j,S->nz-1)] + S->value_b*u[S->index_b(0,j,S->nz-1)];
+  }  
     //  ...,  ..., nz-1
+  for(int j = 1; j < S->ny-1; j++){
     for(int i = 1; i < S->nx-1; i++){
       v[S->index_c(i,j,S->nz-1)] = S->value_c*u[S->index_c(i,j,S->nz-1)] + S->value_e*u[S->index_e(i,j,S->nz-1)] + S->value_w*u[S->index_w(i,j,S->nz-1)] + S->value_n*u[S->index_n(i,j,S->nz-1)] + S->value_s*u[S->index_s(i,j,S->nz-1)] + S->value_b*u[S->index_b(i,j,S->nz-1)];
     }
+  }
     // nx-1,  ..., nz-1
+  for(int j = 1; j < S->ny-1; j++){
     v[S->index_c(S->nx-1,j,S->nz-1)] = S->value_c*u[S->index_c(S->nx-1,j,S->nz-1)] + S->value_w*u[S->index_w(S->nx-1,j,S->nz-1)] + S->value_n*u[S->index_n(S->nx-1,j,S->nz-1)]+ S->value_s*u[S->index_s(S->nx-1,j,S->nz-1)] + S->value_b*u[S->index_b(S->nx-1,j,S->nz-1)];
   }
 
   //    0, ny-1, nz-1
   v[S->index_c(0,S->ny-1,S->nz-1)] = S->value_c*u[S->index_c(0,S->ny-1,S->nz-1)] + S->value_e*u[S->index_e(0,S->ny-1,S->nz-1)] + S->value_s*u[S->index_s(0,S->ny-1,S->nz-1)] + S->value_b*u[S->index_b(0,S->ny-1,S->nz-1)];
   //  ..., ny-1, nz-1
-  //#pragma omp parallel for
   for(int i = 1; i < S->nx-1; i++){
     v[S->index_c(i,S->ny-1,S->nz-1)] = S->value_c*u[S->index_c(i,S->ny-1,S->nz-1)] + S->value_e*u[S->index_e(i,S->ny-1,S->nz-1)] + S->value_w*u[S->index_w(i,S->ny-1,S->nz-1)] + S->value_s*u[S->index_s(i,S->ny-1,S->nz-1)] + S->value_b*u[S->index_b(i,S->ny-1,S->nz-1)];
   }
