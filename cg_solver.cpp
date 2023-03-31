@@ -39,7 +39,7 @@ void cg_solver(stencil3d const* op, int n, double* x, double const* b,
   int iter = -1;
   while (true)
   {
-    Timer timer("total iteration")
+    Timer timer("total iteration");
     iter++;
 
     // rho = <r, r>
