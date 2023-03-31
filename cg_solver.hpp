@@ -1,6 +1,7 @@
 #pragma once
 
 #include "operations.hpp"
+#include "timer.hpp"
 
 // run Conjugate Gradient iterations to solve the linear system
 // op*x=b, where op is the 7-point stencil representation of a linear
