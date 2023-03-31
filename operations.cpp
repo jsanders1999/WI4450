@@ -358,10 +358,10 @@ void apply_stencil3d_noif_block(stencil3d const* S,
   //  ...,  ...,  ...
   #pragma omp parallel for collapse(3)
   for(int k = 1; k < S->nz-1; k++){
-    for(jb = 1; jb < S->ny-1, jb+=blocky){
-      for(ib = 1; ib < S->nx-1, ib+=blockx){
-        for(int j = jb; j < jb+blocky & j< S->ny-1 ; j++){
-          for(int i = ib; i < ib+blockx & i< S->nx-1 ; i++){
+    for(jb = 1; jb < S->ny-1; jb+=blocky){
+      for(ib = 1; ib < S->nx-1; ib+=blockx){
+        for(int j = jb; j < jb+blocky && j< S->ny-1 ; j++){
+          for(int i = ib; i < ib+blockx && i< S->nx-1 ; i++){
             v[S->index_c(i,j,k)] = S->value_c*u[S->index_c(i,j,k)] + S->value_e*u[S->index_e(i,j,k)] + S->value_w*u[S->index_w(i,j,k)] + S->value_n*u[S->index_n(i,j,k)] + S->value_s*u[S->index_s(i,j,k)] + S->value_t*u[S->index_t(i,j,k)] + S->value_b*u[S->index_b(i,j,k)];
           }
         }
