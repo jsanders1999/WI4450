@@ -146,7 +146,7 @@ void apply_stencil3d_noif(stencil3d const* S,
   //  ...,    0,    0
   //#pragma omp parallel for
   for(int i = 1; i < S->nx-1; i++){
-    v[S->index_c(i,0,0)] = S->value_c*u[S->index_c(i,0,0)] + S->value_e*u[S->index_e(i,0,0)] + S->value_w*u[S->index_w(i,0,0) + S->value_n*u[S->index_n(i,0,0)] + S->value_t*u[S->index_t(i,0,0)];
+    v[S->index_c(i,0,0)] = S->value_c*u[S->index_c(i,0,0)] + S->value_e*u[S->index_e(i,0,0)] + S->value_w*u[S->index_w(i,0,0)] + S->value_n*u[S->index_n(i,0,0)] + S->value_t*u[S->index_t(i,0,0)];
   }
   // nx-1,    0,    0
   v[S->index_c(S->nx-1,0,0)] = S->value_c*u[S->index_c(S->nx-1,0,0)] + S->value_w*u[S->index_w(S->nx-1,0,0)] + S->value_n*u[S->index_n(S->nx-1,0,0)] + S->value_t*u[S->index_t(S->nx-1,0,0)];
