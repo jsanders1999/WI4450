@@ -8,7 +8,7 @@
 #SBATCH --account=Education-EEMCS-Courses-WI4450
 ## SBATCH --reservation=subnumatest
 #SBATCH --time=02:00:00
-#SBATCH --job-name="Ex1_600grid_12cores"
+#SBATCH --job-name="Ex1_600grid_12cores_noif"
 
 # run CG for a n^3 Poisson problem
 export OMP_NUM_THREADS=12
