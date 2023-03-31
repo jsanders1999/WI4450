@@ -1,6 +1,7 @@
 
 #include "cg_solver.hpp"
 #include "operations.hpp"
+#include "timer.hpp"
 
 #include <cmath>
 #include <stdexcept>
