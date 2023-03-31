@@ -10,7 +10,7 @@
 #SBATCH --time=00:20:00
 
 # run CG for a n^3 Poisson problem
-export OMP_NUM_THREADS=8
-srun ./main_cg_poisson.x 1024 128 128
+export OMP_NUM_THREADS=12
+srun ./main_cg_poisson.x 600
 
 
