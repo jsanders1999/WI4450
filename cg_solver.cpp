@@ -26,7 +26,7 @@ void cg_solver(stencil3d const* op, int n, double* x, double const* b,
   double alpha, beta, rho=1.0, rho_old=0.0;
 
   // r = op * x
-  apply_stencil3d(op, x, r);
+  apply_stencil3d_noif(op, x, r);
 
   // r = b - r;
   axpby(n, 1.0, b, -1.0, r);
@@ -68,7 +68,7 @@ void cg_solver(stencil3d const* op, int n, double* x, double const* b,
     {Timer timerB("3. p = r + alpha * p"); axpby(n, 1.0, r, alpha, p);}
 
     // q = op * p
-    {Timer timerC("4. q = op * p"); apply_stencil3d(op, p, q);}
+    {Timer timerC("4. q = op * p"); apply_stencil3d_noif(op, p, q);}
 
     // beta = <p,q>
     {Timer timerD("5. beta = <p,q>"); beta = dot(n, p, q);}
