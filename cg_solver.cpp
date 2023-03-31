@@ -39,11 +39,11 @@ void cg_solver(stencil3d const* op, int n, double* x, double const* b,
   int iter = -1;
   while (true)
   {
-    Timer timerA("total iteration");
+    Timer timerA(" 1. total iteration");
     iter++;
 
     // rho = <r, r>
-    {Timer timer("rho = <r, r>"); rho = dot(n, r, r);}
+    {Timer timer("2. rho = <r, r>"); rho = dot(n, r, r);}
 
     if (verbose)
     {
@@ -65,21 +65,21 @@ void cg_solver(stencil3d const* op, int n, double* x, double const* b,
       alpha = rho / rho_old;
     }
     // p = r + alpha * p
-    {Timer timerB("p = r + alpha * p"); axpby(n, 1.0, r, alpha, p);}
+    {Timer timerB("3. p = r + alpha * p"); axpby(n, 1.0, r, alpha, p);}
 
     // q = op * p
-    {Timer timerC("q = op * p"); apply_stencil3d(op, p, q);}
+    {Timer timerC("4. q = op * p"); apply_stencil3d(op, p, q);}
 
     // beta = <p,q>
-    {Timer timerD("beta = <p,q>"); beta = dot(n, p, q);}
+    {Timer timerD("5. beta = <p,q>"); beta = dot(n, p, q);}
 
     alpha = rho / beta;
 
     // x = x + alpha * p
-    {Timer timerE("x = x + alpha * p"); axpby(n, alpha, p, 1.0, x);}
+    {Timer timerE("6. x = x + alpha * p"); axpby(n, alpha, p, 1.0, x);}
 
     // r = r - alpha * q
-    {Timer timerF("r = r - alpha * q"); axpby(n, -alpha, q, 1.0, r);}
+    {Timer timerF("7. r = r - alpha * q"); axpby(n, -alpha, q, 1.0, r);}
     //twice_axpby(n , alpha , p , 1.0 , x , - alpha , q , 1.0 , r );
 
     std::swap(rho_old, rho);
