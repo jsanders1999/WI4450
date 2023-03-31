@@ -99,3 +99,6 @@ void apply_stencil3d_threads(stencil3d const* S,
 void apply_stencil3d_noif(stencil3d const* S,
         double const* u, double* v);
 
+void apply_stencil3d_noif_block(stencil3d const* S,
+        double const* u, double* v, int blockx, int blocky);
+
