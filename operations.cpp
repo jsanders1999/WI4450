@@ -174,7 +174,6 @@ void apply_stencil3d_noif(stencil3d const* S,
    v[S->index_c(S->nx-1,S->ny-1,0)] = S->value_c*u[S->index_c(S->nx-1,S->ny-1,0)] + S->value_w*u[S->index_w(S->nx-1,S->ny-1,0)] + S->value_s*u[S->index_s(S->nx-1,S->ny-1,0)] + S->value_t*u[S->index_t(S->nx-1,S->ny-1,0)];
 
 
-
   for(int k = 1; k < S->nz-1; k++){
     //    0,    0,  ...
     v[S->index_c(0,0,k)] = S->value_c*u[S->index_c(0,0,k)] + S->value_e*u[S->index_e(0,0,k)] + S->value_n*u[S->index_n(0,0,k)] + S->value_t*u[S->index_t(0,0,k)] + S->value_b*u[S->index_b(0,0,k)];
@@ -207,7 +206,6 @@ void apply_stencil3d_noif(stencil3d const* S,
     }
     // nx-1, ny-1,  ...
     v[S->index_c(S->nx-1,S->ny-1,k)] = S->value_c*u[S->index_c(S->nx-1,S->ny-1,k)] + S->value_w*u[S->index_w(S->nx-1,S->ny-1,k)] + S->value_s*u[S->index_s(S->nx-1,S->ny-1,k)] + S->value_t*u[S->index_t(S->nx-1,S->ny-1,k)] + S->value_b*u[S->index_b(S->nx-1,S->ny-1,k)];
-
   }
   
 
