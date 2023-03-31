@@ -135,7 +135,7 @@ void apply_stencil3d_threads(stencil3d const* S,
 }
 
 void apply_stencil3d_noif(stencil3d const* S,
-        double const* u, double* v, int threadnum)
+        double const* u, double* v)
 {
   // A for loop over the three dimensions that applies the stencil S to vector u and stores it in v
   //#pragma omp parallel for
