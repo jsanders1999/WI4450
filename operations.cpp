@@ -104,40 +104,6 @@ void apply_stencil3d(stencil3d const* S,
         v[S->index_c(i,j,k)] += ((j==0) ? 0 : S->value_s*u[S->index_s(i,j,k)]) + ((j==S->ny-1) ? 0 : S->value_n*u[S->index_n(i,j,k)]) ;
         // Add the top and/or bottom values of the stencil (z direction)
         v[S->index_c(i,j,k)] += ((k==0) ? 0 : S->value_b*u[S->index_b(i,j,k)]) + ((k==S->nz-1) ? 0 : S->value_t*u[S->index_t(i,j,k)]) ;
-
-/*         // Add the east and/or west values of the stencil (x direction)
-        if(i==0){// Boundary x=0
-          v[S->index_c(i,j,k)] += S->value_e*u[S->index_e(i,j,k)];
-        }
-        else if(i==S->nx-1){// Boundary x=1
-          v[S->index_c(i,j,k)] += S->value_w*u[S->index_w(i,j,k)];
-        }
-        else{// Interior 0<x<1
-          v[S->index_c(i,j,k)] += S->value_e*u[S->index_e(i,j,k)] + S->value_w*u[S->index_w(i,j,k)];
-        }
-
-        // Add the north and/or south values of the stencil (y direction)
-        if(j==0){// Boundary y=0
-          v[S->index_c(i,j,k)] += S->value_n*u[S->index_n(i,j,k)];
-        }
-        else if(j==S->ny-1){ // Boundary y=1
-          v[S->index_c(i,j,k)] += S->value_s*u[S->index_s(i,j,k)];
-        }
-        else{// Interior 0<y<1
-          v[S->index_c(i,j,k)] += S->value_n*u[S->index_n(i,j,k)] + S->value_s*u[S->index_s(i,j,k)];
-        }
-        
-        // Add the top and/or bottom values of the stencil (z direction)
-        if(k==0){// Boundary z=0
-          v[S->index_c(i,j,k)] += S->value_t*u[S->index_t(i,j,k)];
-        }
-        else if(k==S->nz-1){// Boundary z=1
-          v[S->index_c(i,j,k)] += S->value_b*u[S->index_b(i,j,k)];
-        }
-        else{// Interior 0<z<1
-          v[S->index_c(i,j,k)] += S->value_t*u[S->index_t(i,j,k)] + S->value_b*u[S->index_b(i,j,k)];
-        } */
-
       }
     }
   }
@@ -149,45 +115,18 @@ void apply_stencil3d_threads(stencil3d const* S,
         double const* u, double* v, int threadnum)
 {
   // A for loop over the three dimensions that applies the stencil S to vector u and stores it in v
-#pragma omp parallel for num_threads(threadnum)
+#pragma omp parallel for num_threads(threadnum) collapse(3)
   for(int k = 0; k < S->nz; k++){
     for(int j = 0; j < S->ny; j++){
       for(int i = 0; i < S->nx; i++){
         // Add the center value of the stencil
         v[S->index_c(i,j,k)] = S->value_c*u[S->index_c(i,j,k)];
-
         // Add the east and/or west values of the stencil (x direction)
-        if(i==0){// Boundary x=0
-          v[S->index_c(i,j,k)] += S->value_e*u[S->index_e(i,j,k)];
-        }
-        else if(i==S->nx-1){// Boundary x=1
-          v[S->index_c(i,j,k)] += S->value_w*u[S->index_w(i,j,k)];
-        }
-        else{// Interior 0<x<1
-          v[S->index_c(i,j,k)] += S->value_e*u[S->index_e(i,j,k)] + S->value_w*u[S->index_w(i,j,k)];
-        }
-
+        v[S->index_c(i,j,k)] += ((i==0) ? 0 : S->value_w*u[S->index_w(i,j,k)]) + ((i==S->nx-1) ? 0 : S->value_e*u[S->index_e(i,j,k)]) ;
         // Add the north and/or south values of the stencil (y direction)
-        if(j==0){// Boundary y=0
-          v[S->index_c(i,j,k)] += S->value_n*u[S->index_n(i,j,k)];
-        }
-        else if(j==S->ny-1){ // Boundary y=1
-          v[S->index_c(i,j,k)] += S->value_s*u[S->index_s(i,j,k)];
-        }
-        else{// Interior 0<y<1
-          v[S->index_c(i,j,k)] += S->value_n*u[S->index_n(i,j,k)] + S->value_s*u[S->index_s(i,j,k)];
-        }
-        
+        v[S->index_c(i,j,k)] += ((j==0) ? 0 : S->value_s*u[S->index_s(i,j,k)]) + ((j==S->ny-1) ? 0 : S->value_n*u[S->index_n(i,j,k)]) ;
         // Add the top and/or bottom values of the stencil (z direction)
-        if(k==0){// Boundary z=0
-          v[S->index_c(i,j,k)] += S->value_t*u[S->index_t(i,j,k)];
-        }
-        else if(k==S->nz-1){// Boundary z=1
-          v[S->index_c(i,j,k)] += S->value_b*u[S->index_b(i,j,k)];
-        }
-        else{// Interior 0<z<1
-          v[S->index_c(i,j,k)] += S->value_t*u[S->index_t(i,j,k)] + S->value_b*u[S->index_b(i,j,k)];
-        }
+        v[S->index_c(i,j,k)] += ((k==0) ? 0 : S->value_b*u[S->index_b(i,j,k)]) + ((k==S->nz-1) ? 0 : S->value_t*u[S->index_t(i,j,k)]) ;
 
       }
     }
