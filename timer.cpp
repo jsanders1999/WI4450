@@ -20,7 +20,7 @@ std::map<std::string, int> Timer::flops_;
   : label_(label)
   {
     t_start_ = omp_get_wtime();
-    flops_it_ = int(flops/1E9);
+    gflops_it_ = flops/1E9;
   }
 
 
@@ -29,7 +29,7 @@ std::map<std::string, int> Timer::flops_;
   {
     double t_end = omp_get_wtime();
     times_[label_] += t_end - t_start_;
-    flops_[label_] += flops_it_;
+    gflops_[label_] += gflops_it_;
     counts_[label_]++;
   }
 
@@ -41,9 +41,9 @@ void Timer::summarize(std::ostream& os)
   for (auto [label, time]: times_)
   {
     int count = counts_[label];
-    int flop = flops_[label];
+    int gflop = gflops_[label];
     std::cout << std::setw(20) << label << "\t" << std::setw(10) << count << "\t" << std::setw(10) << time << "\t" << std::setw(10) << time/double(count) << "\t";
-    std::cout << std::setw(10) << flop  << "\t" << std::setw(10) << flop/double(count) << "\t" << std::setw(10) << flop/time  << std::endl;
+    std::cout << std::setw(10) << gflop  << "\t" << std::setw(10) << gflop/double(count) << "\t" << std::setw(10) << gflop/time  << std::endl;
   }
   os << "============================================================================" << std::endl;
 }
