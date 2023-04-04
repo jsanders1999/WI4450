@@ -17,7 +17,7 @@ std::map<std::string, double> Timer::times_;
 std::map<std::string, double> Timer::gflops_;
 std::map<std::string, double> Timer::gstream_;
 
-  Timer::Timer(std::string label, int flops, int datastream)
+  Timer::Timer(std::string label, unsigned long int flops, unsigned long int datastream)
   : label_(label)
   {
     t_start_ = omp_get_wtime();

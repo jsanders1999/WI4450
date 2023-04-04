@@ -35,7 +35,7 @@ class Timer
 {
 public:
 
-  Timer(std::string label, int flops, int datastream);
+  Timer(std::string label, unsigned long int flops, unsigned long int datastream);
   ~Timer();
   static void summarize(std::ostream& os=std::cout);
 
