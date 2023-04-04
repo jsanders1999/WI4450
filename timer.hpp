@@ -35,7 +35,7 @@ class Timer
 {
 public:
 
-  Timer(std::string label, int flops);
+  Timer(std::string label, int flops, int datastream);
   ~Timer();
   static void summarize(std::ostream& os=std::cout);
 
@@ -44,8 +44,10 @@ private:
   std::string label_;
   double t_start_;
   double gflops_it_;
+  double gstream_it_;
   static std::map<std::string, double> times_;
   static std::map<std::string, int> counts_;
   static std::map<std::string, double> gflops_;
+  static std::map<std::string, double> gstream_;
 
 };
