@@ -46,5 +46,6 @@ private:
   int flops_;
   static std::map<std::string, double> times_;
   static std::map<std::string, int> counts_;
+  static std::map<std::string, int> flops_;
 
 };
