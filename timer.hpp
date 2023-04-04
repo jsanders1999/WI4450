@@ -43,7 +43,7 @@ private:
 
   std::string label_;
   double t_start_;
-  int flops_;
+  int flops_it_;
   static std::map<std::string, double> times_;
   static std::map<std::string, int> counts_;
   static std::map<std::string, int> flops_;
