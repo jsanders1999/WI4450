@@ -1,6 +1,6 @@
 CXX=g++
 #CXX_FLAGS=-O2 -g -fopenmp -std=c++17
-CXX_FLAGS=-O3 -march=nmative -g -fopenmp -std=c++17
+CXX_FLAGS=-O3 -march=native -g -fopenmp -std=c++17
 
 DEFS=-DNDEBUG
 
