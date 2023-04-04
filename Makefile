@@ -28,7 +28,7 @@ run_tests.x: run_tests.cpp ${TEST_SOURCES} gtest_mpi.o operations.o cg_solver.o
 main_cg_poisson.x: ${MAIN_OBJ}
 	${CXX} ${CXX_FLAGS} ${DEFS} -o main_cg_poisson.x $^
 
-main_cg_poisson_block.x: ${MAIN_BLOCK}
+main_cg_block.x: ${MAIN_BLOCK}
 	${CXX} ${CXX_FLAGS} ${DEFS} -o main_cg_block.x $^
 
 main_benchmarks.x: ${MAIN_BENCH}
