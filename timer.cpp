@@ -14,7 +14,7 @@
 // will get linker errors (undefined reference)
 std::map<std::string, int> Timer::counts_;
 std::map<std::string, double> Timer::times_;
-std::map<std::string, int> Timer::gflops_;
+std::map<std::string, double> Timer::gflops_;
 
   Timer::Timer(std::string label, int flops)
   : label_(label)
@@ -41,7 +41,7 @@ void Timer::summarize(std::ostream& os)
   for (auto [label, time]: times_)
   {
     int count = counts_[label];
-    int gflop = gflops_[label];
+    double gflop = gflops_[label];
     std::cout << std::setw(20) << label << "\t" << std::setw(10) << count << "\t" << std::setw(10) << time << "\t" << std::setw(10) << time/double(count) << "\t";
     std::cout << std::setw(10) << gflop  << "\t" << std::setw(10) << gflop/double(count) << "\t" << std::setw(10) << gflop/time  << std::endl;
   }

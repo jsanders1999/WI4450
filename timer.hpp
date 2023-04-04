@@ -46,6 +46,6 @@ private:
   int gflops_it_;
   static std::map<std::string, double> times_;
   static std::map<std::string, int> counts_;
-  static std::map<std::string, int> gflops_;
+  static std::map<std::string, double> gflops_;
 
 };
