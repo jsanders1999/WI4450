@@ -51,11 +51,14 @@ int main(int argc, char* argv[])
 {
   {Timer timer1("Start of program");
   int nx, ny, nz;
+  int blockx, blocky;
 
-  if      (argc==1) {nx=128;           ny=128;           nz=128;}
-  else if (argc==2) {nx=atoi(argv[1]); ny=nx;            nz=nx;}
-  else if (argc==4) {nx=atoi(argv[1]); ny=atoi(argv[2]); nz=atoi(argv[3]);}
-  else {std::cerr << "Invalid number of arguments (should be 0, 1 or 3)"<<std::endl; exit(-1);}
+  if      (argc==1) {nx=128;           ny=128;           nz=128;           blockx = 32;          blocky = 32;}
+  else if (argc==2) {nx=atoi(argv[1]); ny=nx;            nz=nx;            blockx = 32;          blocky = 32;}
+  else if (argc==3) {nx=atoi(argv[1]); ny=nx;            nz=nx;            blockx=atoi(argv[2]); blocky = blockx;}
+  //else if (argc==4) {nx=atoi(argv[1]); ny=atoi(argv[2]); nz=atoi(argv[3]); }
+  else if (argc==6) {nx=atoi(argv[1]); ny=atoi(argv[2]); nz=atoi(argv[3]); blockx=atoi(argv[4]); blockz=atoi(argv[5]);}
+  else {std::cerr << "Invalid number of arguments (should be 0, 1, 2 or 5)"<<std::endl; exit(-1);}
   if (ny<0) ny=nx;
   if (nz<0) nz=nx;
 
@@ -103,7 +106,7 @@ int main(int argc, char* argv[])
   double resNorm, tol=std::sqrt(std::numeric_limits<double>::epsilon());
   {Timer timer2("Before cg_solver");
   try {
-  cg_solver(&L, n, x, b, tol, maxIter, &resNorm, &numIter);
+  cg_solver_block(&L, n, x, b, tol, maxIter, &resNorm, &numIter, blockx, blocky);
   } catch(std::exception e)
   {
     std::cerr << "Caught an exception in cg_solve: " << e.what() << std::endl;

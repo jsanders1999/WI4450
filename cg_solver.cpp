@@ -98,7 +98,7 @@ void cg_solver(stencil3d const* op, int n, double* x, double const* b,
 
 void cg_solver_block(stencil3d const* op, int n, double* x, double const* b,
         double tol, int maxIter,
-        double* resNorm, int* numIter,
+        double* resNorm, int* numIter, int blockx, int blocky,
         int verbose)
 {
   if (op->nx * op->ny * op->nz != n)
@@ -113,7 +113,7 @@ void cg_solver_block(stencil3d const* op, int n, double* x, double const* b,
   double alpha, beta, rho=1.0, rho_old=0.0;
 
   // r = op * x
-  apply_stencil3d_noif_block(op, x, r, 16, 16);
+  apply_stencil3d_noif_block(op, x, r, blockx, blocky);
 
   // r = b - r;
   axpby(n, 1.0, b, -1.0, r);
@@ -155,7 +155,7 @@ void cg_solver_block(stencil3d const* op, int n, double* x, double const* b,
     {Timer timerB("3. p = r + alpha * p"); axpby(n, 1.0, r, alpha, p);}
 
     // q = op * p
-    {Timer timerC("4. q = op * p"); apply_stencil3d_noif_block(op, p, q, 16, 16);}
+    {Timer timerC("4. q = op * p"); apply_stencil3d_noif_block(op, p, q,  blockx, blocky);}
 
     // beta = <p,q>
     {Timer timerD("5. beta = <p,q>"); beta = dot(n, p, q);}

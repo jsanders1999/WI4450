@@ -15,7 +15,7 @@ void cg_solver(stencil3d const* op, int n, double* x, double const* b,
 
 void cg_solver_block(stencil3d const* op, int n, double* x, double const* b,
         double  tol,     int  maxIter,
-        double* resNorm, int* numIter,
+        double* resNorm, int* numIter, int blockx, int blocky,
         int verbose=1);
 
 void cg_solver_threads(stencil3d const* op, int n, double* x, double const* b,
