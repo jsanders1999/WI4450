@@ -14,6 +14,7 @@ default: run_tests.x main_cg_poisson.x main_benchmarks.x
 operations.o: operations.hpp timer.hpp
 cg_solver.o: cg_solver.hpp operations.hpp timer.hpp
 cg_poisson.o: cg_solver.hpp operations.hpp timer.hpp
+cg_block.o: cg_solver.hpp operations.hpp timer.hpp
 gtest_mpi.o: gtest_mpi.hpp
 
 TEST_SOURCES=test_operations.cpp test_cg_solver.cpp timer.o
