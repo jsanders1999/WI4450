@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
   else if (argc==2) {nx=atoi(argv[1]); ny=nx;            nz=nx;            blockx = 32;          blocky = 32;}
   else if (argc==3) {nx=atoi(argv[1]); ny=nx;            nz=nx;            blockx=atoi(argv[2]); blocky = blockx;}
   //else if (argc==4) {nx=atoi(argv[1]); ny=atoi(argv[2]); nz=atoi(argv[3]); }
-  else if (argc==6) {nx=atoi(argv[1]); ny=atoi(argv[2]); nz=atoi(argv[3]); blockx=atoi(argv[4]); blockz=atoi(argv[5]);}
+  else if (argc==6) {nx=atoi(argv[1]); ny=atoi(argv[2]); nz=atoi(argv[3]); blockx=atoi(argv[4]); blocky=atoi(argv[5]);}
   else {std::cerr << "Invalid number of arguments (should be 0, 1, 2 or 5)"<<std::endl; exit(-1);}
   if (ny<0) ny=nx;
   if (nz<0) nz=nx;
