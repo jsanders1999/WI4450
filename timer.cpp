@@ -29,7 +29,7 @@ std::map<std::string, int> Timer::flops_;
   {
     double t_end = omp_get_wtime();
     times_[label_] += t_end - t_start_;
-    flops_[label_] += flops_;
+    flops_[label_] += flops_it_;
     counts_[label_]++;
   }
 
