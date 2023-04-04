@@ -9,7 +9,7 @@
 ## SBATCH --reservation=subnumatest
 #SBATCH --time=02:00:00
 #SBATCH --job-name="Ex1_600grid_12cores_noif"
-#SBATCH --job-name="TESTFLOPS"
+##SBATCH --output=600Grid12threads_Flops&Bandwidth.out
 
 # run CG for a n^3 Poisson problem
 export OMP_NUM_THREADS=12
