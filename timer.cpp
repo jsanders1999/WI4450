@@ -43,7 +43,7 @@ void Timer::summarize(std::ostream& os)
     int count = counts_[label];
     int flop = flops_[label];
     std::cout << std::setw(20) << label << "\t" << std::setw(10) << count << "\t" << std::setw(10) << time << "\t" << std::setw(10) << time/double(count) << "\t" <<;
-    std::cout << std::setw(10) << flop  << "\t" << std::setw(10) << flop/double(count) << "\t" << std::setw(10) << flop/time   std::endl;
+    std::cout << std::setw(10) << flop  << "\t" << std::setw(10) << flop/double(count) << "\t" << std::setw(10) << flop/time  << std::endl;
   }
   os << "============================================================================" << std::endl;
 }
