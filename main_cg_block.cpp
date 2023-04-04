@@ -49,7 +49,7 @@ stencil3d laplace3d_stencil(int nx, int ny, int nz)
 
 int main(int argc, char* argv[])
 {
-  {Timer timer1("Start of program", int(1E99));
+  {Timer timer1("Start of program", int(0));
   int nx, ny, nz;
   int blockx, blocky;
 
@@ -104,7 +104,7 @@ int main(int argc, char* argv[])
   // solve the linear system of equations using CG
   int numIter, maxIter=50000;
   double resNorm, tol=std::sqrt(std::numeric_limits<double>::epsilon());
-  {Timer timer2("Before cg_solver", int(1E99));
+  {Timer timer2("Before cg_solver", int(0));
   try {
   cg_solver_block(&L, n, x, b, tol, maxIter, &resNorm, &numIter, blockx, blocky);
   } catch(std::exception e)
