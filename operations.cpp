@@ -28,7 +28,7 @@ void init_threads(int n, double* x, double value, int threadnum)
 double dot(int n, double const* x, double const* y)
 {
   // A for loop that computes the inner product of n dimensional array x and n dimensional array y
-  double res;
+  double res = 0;
   #pragma omp parallel for reduction(+:res)
   for(int i = 0; i < n; i++)
   {
