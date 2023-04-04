@@ -20,7 +20,7 @@ std::map<std::string, double> Timer::gflops_;
   : label_(label)
   {
     t_start_ = omp_get_wtime();
-    gflops_it_ = flops/1E9;
+    gflops_it_ = double(flops)/1E9;
   }
 
 
