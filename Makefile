@@ -1,12 +1,13 @@
 CXX=g++
-CXX_FLAGS=-O2 -g -fopenmp -std=c++17
+#CXX_FLAGS=-O2 -g -fopenmp -std=c++17
+CXX_FLAGS=-O3 -march=nmative -g -fopenmp -std=c++17
 
 DEFS=-DNDEBUG
 
 #default target (built when typing just "make")
 default: run_tests.x main_cg_poisson.x main_cg_block.x main_benchmarks.x
 
-# general rule to comple a C++ source file into an object file
+# general rule to compile a C++ source file into an object file
 %.o: %.cpp
 	${CXX} -c ${CXX_FLAGS} ${DEFS} $<
 
