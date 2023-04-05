@@ -12,18 +12,28 @@
 ##SBATCH --output=600Grid12threads_Flops&Bandwidth.out
 #SBATCH --output=likwidbenc_daxpy.%j.out
 
-module load 2022r2 likwid
-likwid-bench -w M0:2GB:1 -t daxpy_mem_avx512_fma
-likwid-bench -w M0:2GB:2 -t daxpy_mem_avx512_fma
-likwid-bench -w M0:2GB:4 -t daxpy_mem_avx512_fma
-likwid-bench -w M0:2GB:6 -t daxpy_mem_avx512_fma
-likwid-bench -w M0:2GB:8 -t daxpy_mem_avx512_fma
-likwid-bench -w M0:2GB:10 -t daxpy_mem_avx512_fma
-likwid-bench -w M0:2GB:12 -t daxpy_mem_avx512_fma
-#likwid-bench -w M0:2GB:12 -t daxpy_mem_avx512_fma
+
 
 # run CG for a n^3 Poisson problem
-#export OMP_NUM_THREADS=12
-#srun ./main_cg_poisson.x 600
+export OMP_NUM_THREADS=12
+srun ./main_cg_poisson.x 60
+
+export OMP_NUM_THREADS=10
+srun ./main_cg_poisson.x 60
+
+export OMP_NUM_THREADS=8
+srun ./main_cg_poisson.x 60
+
+export OMP_NUM_THREADS=6
+srun ./main_cg_poisson.x 60
+
+export OMP_NUM_THREADS=4
+srun ./main_cg_poisson.x 60
+
+export OMP_NUM_THREADS=2
+srun ./main_cg_poisson.x 60
+
+export OMP_NUM_THREADS=1
+srun ./main_cg_poisson.x 60
 
 

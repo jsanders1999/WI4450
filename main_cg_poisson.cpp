@@ -103,7 +103,7 @@ int main(int argc, char* argv[])
   double resNorm, tol=std::sqrt(std::numeric_limits<double>::epsilon());
   {Timer timer2("Before cg_solver", 0.0, 0.0);
   try {
-  cg_solver(&L, n, x, b, tol, maxIter, &resNorm, &numIter);
+  cg_solver(&L, n, x, b, tol, maxIter, &resNorm, &numIter, verbose=0);
   } catch(std::exception e)
   {
     std::cerr << "Caught an exception in cg_solve: " << e.what() << std::endl;
