@@ -39,7 +39,7 @@ void cg_solver(stencil3d const* op, int n, double* x, double const* b,
   int iter = -1;
   while (true)
   {
-    Timer timerA(" 1. total iteration", (2+3+6+2+3+3)*n, (1+2+1+2+2+2)*n);
+    Timer timerA(" 1. total iteration", (2+3+6+2+3+3)*double(n), (1+2+1+2+2+2)*double(n));
     iter++;
 
     // rho = <r, r>
@@ -126,7 +126,7 @@ void cg_solver_block(stencil3d const* op, int n, double* x, double const* b,
   int iter = -1;
   while (true)
   {
-    Timer timerA(" 1. total iteration", (2+3+6+2+3+3)*n, (1+2+1+2+2+2)*n);
+    Timer timerA(" 1. total iteration", (2+3+6+2+3+3)*double(n), (1+2+1+2+2+2)*double(n));
     iter++;
 
     // rho = <r, r>
