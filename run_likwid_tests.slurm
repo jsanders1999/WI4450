@@ -8,7 +8,7 @@
 #SBATCH --account=Education-EEMCS-Courses-WI4450
 ## SBATCH --reservation=subnumatest
 #SBATCH --time=02:00:00
-#SBATCH --job-name="Ex1_600grid_12cores_noif"
+#SBATCH --job-name="likwidbenc_daxpy.%j"
 ##SBATCH --output=600Grid12threads_Flops&Bandwidth.out
 #SBATCH --output=likwidbenc_daxpy.%j.out
 
