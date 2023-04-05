@@ -10,9 +10,14 @@
 #SBATCH --time=02:00:00
 #SBATCH --job-name="Ex1_600grid_12cores_noif"
 ##SBATCH --output=600Grid12threads_Flops&Bandwidth.out
+#SBATCH --output=Exercise3.%j.out
+
+module load 2022r2 likwid
+likwid-bench -w M0:2GB:1 -t daxpy_mem_avx512_fma
+#likwid-bench -w M0:2GB:12 -t daxpy_mem_avx512_fma
 
 # run CG for a n^3 Poisson problem
-export OMP_NUM_THREADS=12
-srun ./main_cg_poisson.x 600
+#export OMP_NUM_THREADS=12
+#srun ./main_cg_poisson.x 600
 
 
