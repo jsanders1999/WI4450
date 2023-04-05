@@ -39,7 +39,7 @@ std::map<std::string, double> Timer::gstream_;
 void Timer::summarize(std::ostream& os)
 {
   os << "==================== TIMER SUMMARY =========================================" << std::endl;
-  os << "label               \tcalls     \ttotal time \tmean time \ttotal Gflops \tmean Gflops  \tGflops/s\ttotal datastream\tmean datastream\tbandwidth Gbyte/s "<<std::endl;
+  os << "label               \tcalls     \ttotal time \tmean time \ttotal Gflops \tmean Gflops  \tGflops/s\ttotal datastream\tmean datastream\tbandwidth Gbyte/s\t\t I "<<std::endl;
   os << "----------------------------------------------" << std::endl;
   for (auto [label, time]: times_)
   {
@@ -48,7 +48,7 @@ void Timer::summarize(std::ostream& os)
     double gstream = gstream_[label];
     std::cout << std::setw(20) << label << "\t" << std::setw(10) << count << "\t" << std::setw(10) << time << "\t" << std::setw(10) << time/double(count) << "\t";
     std::cout << std::setw(10) << gflop  << "\t" << std::setw(10) << gflop/double(count) << "\t" << std::setw(10) << gflop/time << "\t";
-    std::cout << std::setw(10) << gstream  << "\t" << std::setw(10) << gstream/double(count) << "\t" << std::setw(10) << gstream/time   << std::endl;
+    std::cout << std::setw(10) << gstream  << "\t" << std::setw(10) << gstream/double(count) << "\t" << std::setw(10) << gstream/time   << "\t" << std::setw(10) << gflops/gstream std::endl;
   }
   os << "============================================================================" << std::endl;
 }
