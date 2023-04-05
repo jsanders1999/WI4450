@@ -10,30 +10,30 @@
 #SBATCH --time=02:00:00
 #SBATCH --job-name="Ex1_600grid_12cores_noif"
 ##SBATCH --output=600Grid12threads_Flops&Bandwidth.out
-#SBATCH --output=likwidbenc_daxpy.%j.out
+#SBATCH --output=cgpoisson_600_.%j.out
 
 
 
 # run CG for a n^3 Poisson problem
 export OMP_NUM_THREADS=12
-srun ./main_cg_poisson.x 60
+srun ./main_cg_poisson.x 600
 
 export OMP_NUM_THREADS=10
-srun ./main_cg_poisson.x 60
+srun ./main_cg_poisson.x 600
 
 export OMP_NUM_THREADS=8
-srun ./main_cg_poisson.x 60
+srun ./main_cg_poisson.x 600
 
 export OMP_NUM_THREADS=6
-srun ./main_cg_poisson.x 60
+srun ./main_cg_poisson.x 600
 
 export OMP_NUM_THREADS=4
-srun ./main_cg_poisson.x 60
+srun ./main_cg_poisson.x 600
 
 export OMP_NUM_THREADS=2
-srun ./main_cg_poisson.x 60
+srun ./main_cg_poisson.x 600
 
 export OMP_NUM_THREADS=1
-srun ./main_cg_poisson.x 60
+srun ./main_cg_poisson.x 600
 
 
