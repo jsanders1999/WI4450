@@ -7,7 +7,7 @@
 #SBATCH --mem=0
 #SBATCH --account=Education-EEMCS-Courses-WI4450
 ## SBATCH --reservation=subnumatest
-#SBATCH --time=02:00:00
+#SBATCH --time=24:00:00
 #SBATCH --job-name="cgpoisson_600_.%j"
 ##SBATCH --output=600Grid12threads_Flops&Bandwidth.out
 #SBATCH --output=cgpoisson_600_.%j.out
