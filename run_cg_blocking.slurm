@@ -9,7 +9,7 @@
 ## SBATCH --reservation=subnumatest
 #SBATCH --time=24:00:00
 #SBATCH --job-name="Blocking_290_.%j"
-#SBATCH --output=Blocking_290_..%j.out
+#SBATCH --output=Blocking_290_.%j.out
 
 
 export OMP_PROC_BIND=close
