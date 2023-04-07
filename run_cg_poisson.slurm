@@ -13,6 +13,8 @@
 #SBATCH --output=cgpoisson_600_.%j.out
 
 
+export OMP_PROC_BIND=close
+export OMP_PLACES=cores
 
 # run CG for a n^3 Poisson problem
 export OMP_NUM_THREADS=12
