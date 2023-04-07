@@ -357,8 +357,8 @@ void apply_stencil3d_noif_block(stencil3d const* S,
     }
   }
   //  ...,  ...,  ...
-  #pragma omp parallel for schedule(static)
   for(int k = 1; k < S->nz-1; k++){
+    #pragma omp parallel for schedule(static) collapse(2)
     for(int jb = 1; jb < S->ny-1; jb+=blocky){
       for(int ib = 1; ib < S->nx-1; ib+=blockx){
         for(int j = jb; j < jb+blocky && j< S->ny-1 ; j++){
