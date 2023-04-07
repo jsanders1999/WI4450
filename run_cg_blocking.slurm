@@ -17,6 +17,9 @@ export OMP_PLACES=cores
 
 # run CG for a n^3 Poisson problem
 export OMP_NUM_THREADS=1
+srun ./main_cg_poisson.x 290
+
+export OMP_NUM_THREADS=1
 srun ./main_cg_block.x 290 290
 
 export OMP_NUM_THREADS=1
