@@ -48,7 +48,7 @@ void Timer::summarize(std::ostream& os)
     double gflop = gflops_[label];
     double gstream = gstream_[label];
     std::cout << std::setw(20) << label << "\t" << std::setw(10) << count << "\t" << std::setw(10) << time << "\t" << std::setw(10) << time/double(count) << "\t";
-    std::cout << std::setw(10) << gflop/time << "\t" << std::setw(10) << gstream/time   << "\t" << std::setw(10) << gflop/gstream << std::endl;
+    std::cout << std::setw(10) << gflop/time << "\t\t" << std::setw(10) << gstream/time   << "\t\t" << std::setw(10) << gflop/gstream << std::endl;
   
     //std::cout << std::setw(20) << label << "\t" << std::setw(10) << count << "\t" << std::setw(10) << time << "\t" << std::setw(10) << time/double(count) << "\t";
     //std::cout << std::setw(10) << gflop  << "\t" << std::setw(10) << gflop/double(count) << "\t" << std::setw(10) << gflop/time << "\t";
