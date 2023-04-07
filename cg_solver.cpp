@@ -155,7 +155,7 @@ void cg_solver_block(stencil3d const* op, int n, double* x, double const* b,
     {Timer timerB("3. p = r + alpha * p", 3*n, 8*2*double(n)); axpby(n, 1.0, r, alpha, p);}
 
     // q = op * p
-    {Timer timerC("4. q = op * p", 6*n, n ); apply_stencil3d_noif_block(op, p, q, blockx, blocky);}
+    {Timer timerC("4. q = op * p", 6*n, 8*double(n) ); apply_stencil3d_noif_block(op, p, q, blockx, blocky);}
 
     // beta = <p,q>
     {Timer timerD("5. beta = <p,q>", 2*n, 8*2*double(n) ); beta = dot(n, p, q);}
