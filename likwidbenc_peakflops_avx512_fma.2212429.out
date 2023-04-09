@@ -1,0 +1,282 @@
+Running without Marker API. Activate Marker API with -m on commandline.
+Allocate: Process running on hwthread 0 (Domain M0) - Vector length 250000000/2000000000 Offset 0 Alignment 512
+--------------------------------------------------------------------------------
+LIKWID MICRO BENCHMARK
+Test: peakflops_avx512_fma
+--------------------------------------------------------------------------------
+Using 1 work groups
+Using 1 threads
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Group: 0 Thread 0 Global Thread 0 running on hwthread 0 - Vector length 250000000 Offset 0
+--------------------------------------------------------------------------------
+Cycles:			4411167132
+CPU Clock:		2992868128
+Cycle Clock:		2992868128
+Time:			1.473893e+00 sec
+Iterations:		10
+Iterations per thread:	10
+Inner loop executions:	31250000
+Size (Byte):		2000000000
+Size per thread:	2000000000
+Number of Flops:	75000000000
+MFlops/s:		50885.65
+Data volume (Byte):	20000000000
+MByte/s:		13569.51
+Cycles per update:	1.764467
+Cycles per cacheline:	14.115735
+Loads per update:	1
+Stores per update:	0
+Load bytes per element:	8
+Store bytes per elem.:	0
+Instructions:		5937500032
+UOPs:			5625000000
+--------------------------------------------------------------------------------
+Running without Marker API. Activate Marker API with -m on commandline.
+Allocate: Process running on hwthread 0 (Domain M0) - Vector length 250000000/2000000000 Offset 0 Alignment 512
+Initialization: First thread in domain initializes the whole stream
+--------------------------------------------------------------------------------
+LIKWID MICRO BENCHMARK
+Test: peakflops_avx512_fma
+--------------------------------------------------------------------------------
+Using 1 work groups
+Using 2 threads
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Group: 0 Thread 0 Global Thread 0 running on hwthread 0 - Vector length 125000000 Offset 0
+Group: 0 Thread 1 Global Thread 1 running on hwthread 1 - Vector length 125000000 Offset 125000000
+--------------------------------------------------------------------------------
+Cycles:			3915415008
+CPU Clock:		2992956049
+Cycle Clock:		2992956049
+Time:			1.308210e+00 sec
+Iterations:		32
+Iterations per thread:	16
+Inner loop executions:	15625000
+Size (Byte):		2000000000
+Size per thread:	1000000000
+Number of Flops:	120000000000
+MFlops/s:		91728.39
+Data volume (Byte):	32000000000
+MByte/s:		24460.90
+Cycles per update:	0.978854
+Cycles per cacheline:	7.830830
+Loads per update:	1
+Stores per update:	0
+Load bytes per element:	8
+Store bytes per elem.:	0
+Instructions:		9500000032
+UOPs:			9000000000
+--------------------------------------------------------------------------------
+Running without Marker API. Activate Marker API with -m on commandline.
+Allocate: Process running on hwthread 0 (Domain M0) - Vector length 250000000/2000000000 Offset 0 Alignment 512
+Initialization: First thread in domain initializes the whole stream
+--------------------------------------------------------------------------------
+LIKWID MICRO BENCHMARK
+Test: peakflops_avx512_fma
+--------------------------------------------------------------------------------
+Using 1 work groups
+Using 4 threads
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Group: 0 Thread 1 Global Thread 1 running on hwthread 1 - Vector length 62500000 Offset 62500000
+Group: 0 Thread 2 Global Thread 2 running on hwthread 2 - Vector length 62500000 Offset 125000000
+Group: 0 Thread 0 Global Thread 0 running on hwthread 0 - Vector length 62500000 Offset 0
+Group: 0 Thread 3 Global Thread 3 running on hwthread 3 - Vector length 62500000 Offset 187500000
+--------------------------------------------------------------------------------
+Cycles:			4590986596
+CPU Clock:		2992991396
+Cycle Clock:		2992991396
+Time:			1.533912e+00 sec
+Iterations:		128
+Iterations per thread:	32
+Inner loop executions:	7812500
+Size (Byte):		2000000000
+Size per thread:	500000000
+Number of Flops:	240000000000
+MFlops/s:		156462.65
+Data volume (Byte):	64000000000
+MByte/s:		41723.37
+Cycles per update:	0.573873
+Cycles per cacheline:	4.590987
+Loads per update:	1
+Stores per update:	0
+Load bytes per element:	8
+Store bytes per elem.:	0
+Instructions:		19000000032
+UOPs:			18000000000
+--------------------------------------------------------------------------------
+Running without Marker API. Activate Marker API with -m on commandline.
+Warning: Sanitizing vector length to a multiple of the loop stride 8 and thread count 6 from 250000000 elements (2000000000 bytes) to 249999984 elements (1999999872 bytes)
+Allocate: Process running on hwthread 0 (Domain M0) - Vector length 249999984/1999999872 Offset 0 Alignment 512
+Initialization: First thread in domain initializes the whole stream
+--------------------------------------------------------------------------------
+LIKWID MICRO BENCHMARK
+Test: peakflops_avx512_fma
+--------------------------------------------------------------------------------
+Using 1 work groups
+Using 6 threads
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Group: 0 Thread 1 Global Thread 1 running on hwthread 1 - Vector length 41666664 Offset 41666664
+Group: 0 Thread 2 Global Thread 2 running on hwthread 2 - Vector length 41666664 Offset 83333328
+Group: 0 Thread 5 Global Thread 5 running on hwthread 8 - Vector length 41666664 Offset 208333320
+Group: 0 Thread 3 Global Thread 3 running on hwthread 3 - Vector length 41666664 Offset 124999992
+Group: 0 Thread 0 Global Thread 0 running on hwthread 0 - Vector length 41666664 Offset 0
+Group: 0 Thread 4 Global Thread 4 running on hwthread 7 - Vector length 41666664 Offset 166666656
+--------------------------------------------------------------------------------
+Cycles:			7426002710
+CPU Clock:		2992998486
+Cycle Clock:		2992998486
+Time:			2.481125e+00 sec
+Iterations:		384
+Iterations per thread:	64
+Inner loop executions:	5208333
+Size (Byte):		1999999872
+Size per thread:	333333312
+Number of Flops:	479999969280
+MFlops/s:		193460.63
+Data volume (Byte):	127999991808
+MByte/s:		51589.50
+Cycles per update:	0.464125
+Cycles per cacheline:	3.713002
+Loads per update:	1
+Stores per update:	0
+Load bytes per element:	8
+Store bytes per elem.:	0
+Instructions:		37999997600
+UOPs:			35999997696
+--------------------------------------------------------------------------------
+Running without Marker API. Activate Marker API with -m on commandline.
+Allocate: Process running on hwthread 0 (Domain M0) - Vector length 250000000/2000000000 Offset 0 Alignment 512
+Initialization: First thread in domain initializes the whole stream
+--------------------------------------------------------------------------------
+LIKWID MICRO BENCHMARK
+Test: peakflops_avx512_fma
+--------------------------------------------------------------------------------
+Using 1 work groups
+Using 8 threads
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Group: 0 Thread 1 Global Thread 1 running on hwthread 1 - Vector length 31250000 Offset 31250000
+Group: 0 Thread 2 Global Thread 2 running on hwthread 2 - Vector length 31250000 Offset 62500000
+Group: 0 Thread 5 Global Thread 5 running on hwthread 8 - Vector length 31250000 Offset 156250000
+Group: 0 Thread 3 Global Thread 3 running on hwthread 3 - Vector length 31250000 Offset 93750000
+Group: 0 Thread 0 Global Thread 0 running on hwthread 0 - Vector length 31250000 Offset 0
+Group: 0 Thread 4 Global Thread 4 running on hwthread 7 - Vector length 31250000 Offset 125000000
+Group: 0 Thread 7 Global Thread 7 running on hwthread 13 - Vector length 31250000 Offset 218750000
+Group: 0 Thread 6 Global Thread 6 running on hwthread 9 - Vector length 31250000 Offset 187500000
+--------------------------------------------------------------------------------
+Cycles:			7903290540
+CPU Clock:		2992993899
+Cycle Clock:		2992993899
+Time:			2.640597e+00 sec
+Iterations:		512
+Iterations per thread:	64
+Inner loop executions:	3906250
+Size (Byte):		2000000000
+Size per thread:	250000000
+Number of Flops:	480000000000
+MFlops/s:		181777.08
+Data volume (Byte):	128000000000
+MByte/s:		48473.89
+Cycles per update:	0.493956
+Cycles per cacheline:	3.951645
+Loads per update:	1
+Stores per update:	0
+Load bytes per element:	8
+Store bytes per elem.:	0
+Instructions:		38000000032
+UOPs:			36000000000
+--------------------------------------------------------------------------------
+Running without Marker API. Activate Marker API with -m on commandline.
+Allocate: Process running on hwthread 0 (Domain M0) - Vector length 250000000/2000000000 Offset 0 Alignment 512
+Initialization: First thread in domain initializes the whole stream
+--------------------------------------------------------------------------------
+LIKWID MICRO BENCHMARK
+Test: peakflops_avx512_fma
+--------------------------------------------------------------------------------
+Using 1 work groups
+Using 10 threads
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Group: 0 Thread 1 Global Thread 1 running on hwthread 1 - Vector length 25000000 Offset 25000000
+Group: 0 Thread 2 Global Thread 2 running on hwthread 2 - Vector length 25000000 Offset 50000000
+Group: 0 Thread 3 Global Thread 3 running on hwthread 3 - Vector length 25000000 Offset 75000000
+Group: 0 Thread 4 Global Thread 4 running on hwthread 7 - Vector length 25000000 Offset 100000000
+Group: 0 Thread 5 Global Thread 5 running on hwthread 8 - Vector length 25000000 Offset 125000000
+Group: 0 Thread 0 Global Thread 0 running on hwthread 0 - Vector length 25000000 Offset 0
+Group: 0 Thread 6 Global Thread 6 running on hwthread 9 - Vector length 25000000 Offset 150000000
+Group: 0 Thread 7 Global Thread 7 running on hwthread 13 - Vector length 25000000 Offset 175000000
+Group: 0 Thread 9 Global Thread 9 running on hwthread 15 - Vector length 25000000 Offset 225000000
+Group: 0 Thread 8 Global Thread 8 running on hwthread 14 - Vector length 25000000 Offset 200000000
+--------------------------------------------------------------------------------
+Cycles:			13166477806
+CPU Clock:		2992997256
+Cycle Clock:		2992997256
+Time:			4.399095e+00 sec
+Iterations:		1280
+Iterations per thread:	128
+Inner loop executions:	3125000
+Size (Byte):		2000000000
+Size per thread:	200000000
+Number of Flops:	960000000000
+MFlops/s:		218226.73
+Data volume (Byte):	256000000000
+MByte/s:		58193.79
+Cycles per update:	0.411452
+Cycles per cacheline:	3.291619
+Loads per update:	1
+Stores per update:	0
+Load bytes per element:	8
+Store bytes per elem.:	0
+Instructions:		76000000032
+UOPs:			72000000000
+--------------------------------------------------------------------------------
+Running without Marker API. Activate Marker API with -m on commandline.
+Warning: Sanitizing vector length to a multiple of the loop stride 8 and thread count 12 from 250000000 elements (2000000000 bytes) to 249999936 elements (1999999488 bytes)
+Allocate: Process running on hwthread 0 (Domain M0) - Vector length 249999936/1999999488 Offset 0 Alignment 512
+Initialization: First thread in domain initializes the whole stream
+--------------------------------------------------------------------------------
+LIKWID MICRO BENCHMARK
+Test: peakflops_avx512_fma
+--------------------------------------------------------------------------------
+Using 1 work groups
+Using 12 threads
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Group: 0 Thread 1 Global Thread 1 running on hwthread 1 - Vector length 20833328 Offset 20833328
+Group: 0 Thread 2 Global Thread 2 running on hwthread 2 - Vector length 20833328 Offset 41666656
+Group: 0 Thread 6 Global Thread 6 running on hwthread 9 - Vector length 20833328 Offset 124999968
+Group: 0 Thread 3 Global Thread 3 running on hwthread 3 - Vector length 20833328 Offset 62499984
+Group: 0 Thread 5 Global Thread 5 running on hwthread 8 - Vector length 20833328 Offset 104166640
+Group: 0 Thread 4 Global Thread 4 running on hwthread 7 - Vector length 20833328 Offset 83333312
+Group: 0 Thread 7 Global Thread 7 running on hwthread 13 - Vector length 20833328 Offset 145833296
+Group: 0 Thread 11 Global Thread 11 running on hwthread 20 - Vector length 20833328 Offset 229166608
+Group: 0 Thread 0 Global Thread 0 running on hwthread 0 - Vector length 20833328 Offset 0
+Group: 0 Thread 10 Global Thread 10 running on hwthread 19 - Vector length 20833328 Offset 208333280
+Group: 0 Thread 8 Global Thread 8 running on hwthread 14 - Vector length 20833328 Offset 166666624
+Group: 0 Thread 9 Global Thread 9 running on hwthread 15 - Vector length 20833328 Offset 187499952
+--------------------------------------------------------------------------------
+Cycles:			12171333600
+CPU Clock:		2992907920
+Cycle Clock:		2992907920
+Time:			4.066725e+00 sec
+Iterations:		1536
+Iterations per thread:	128
+Inner loop executions:	2604166
+Size (Byte):		1999999488
+Size per thread:	166666624
+Number of Flops:	959999754240
+MFlops/s:		236062.12
+Data volume (Byte):	255999934464
+MByte/s:		62949.90
+Cycles per update:	0.380354
+Cycles per cacheline:	3.042834
+Loads per update:	1
+Stores per update:	0
+Load bytes per element:	8
+Store bytes per elem.:	0
+Instructions:		75999980576
+UOPs:			71999981568
+--------------------------------------------------------------------------------

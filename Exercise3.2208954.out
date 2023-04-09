@@ -1,0 +1,36 @@
+Running without Marker API. Activate Marker API with -m on commandline.
+Allocate: Process running on hwthread 0 (Domain M0) - Vector length 125000000/1000000000 Offset 0 Alignment 512
+Allocate: Process running on hwthread 0 (Domain M0) - Vector length 125000000/1000000000 Offset 0 Alignment 512
+--------------------------------------------------------------------------------
+LIKWID MICRO BENCHMARK
+Test: daxpy_mem_avx512_fma
+--------------------------------------------------------------------------------
+Using 1 work groups
+Using 1 threads
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Group: 0 Thread 0 Global Thread 0 running on hwthread 0 - Vector length 125000000 Offset 0
+--------------------------------------------------------------------------------
+Cycles:			4876343068
+CPU Clock:		2992841685
+Cycle Clock:		2992841685
+Time:			1.629335e+00 sec
+Iterations:		10
+Iterations per thread:	10
+Inner loop executions:	3906250
+Size (Byte):		2000000000
+Size per thread:	2000000000
+Number of Flops:	2500000000
+MFlops/s:		1534.37
+Data volume (Byte):	30000000000
+MByte/s:		18412.41
+Cycles per update:	3.901074
+Cycles per cacheline:	31.208596
+Loads per update:	2
+Stores per update:	1
+Load bytes per element:	16
+Store bytes per elem.:	8
+Load/store ratio:	2.00
+Instructions:		585937517
+UOPs:			859375000
+--------------------------------------------------------------------------------
